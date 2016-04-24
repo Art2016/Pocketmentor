@@ -19,13 +19,8 @@ module.exports = function (grunt) {
             all: { src: 'qa/tests-*.js', options: { ui: 'tdd' } }
         },
         jshint: {
-            app: ['app.js', 'public/js/**/*.js', 'lib/**/*.js'],
+            app: ['app.js',' routes.js', 'public/js/**/*.js', 'lib/**/*.js'],
             qa: ['Gruntfile.js', 'public/qa/**/*.js', 'qa/**/*.js']
-        },
-        nodemon: {
-            dev: {
-                script: 'app.js'
-            }
         },
         less: {
             development: {
@@ -40,7 +35,7 @@ module.exports = function (grunt) {
                     }
                 },
                 files: {
-                    "css/app.css": "less/app.less",
+                    "public/css/app.css": "public/less/app.less",
                 },
                 cleancss: true
             }
@@ -51,8 +46,13 @@ module.exports = function (grunt) {
             },
             target: {
                 files: {
-                    'css/app.min.css': ['css/app.css']
+                    'public/css/app.min.css': ['public/css/app.css']
                 }
+            }
+        },
+        nodemon: {
+            dev: {
+                script: 'app.js'
             }
         },
         watch: {
@@ -64,8 +64,8 @@ module.exports = function (grunt) {
                 },
             },
             styles: {
-                files: ['css/**/*.css'], // which files to watch
-                tasks: ['cssmin'],
+                files: ['public/less/**/*.less'], // which files to watch
+                tasks: ['less', 'cssmin'],
                 options: {
                     spawn: false,
                 },
@@ -118,5 +118,5 @@ module.exports = function (grunt) {
     });
 
     // Working Register
-    grunt.registerTask('default', ['cafemocha', 'jshint', 'cssmin', 'concurrent']);
+    grunt.registerTask('default', ['jshint', 'less', 'cssmin', 'concurrent']);
 };

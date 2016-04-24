@@ -11009,6 +11009,18 @@ a.thumbnail.active {
 .ie-warning .iew-download > li > a:hover {
   background-color: #eee;
 }
+#l-login form input + small {
+  color: red;
+}
+#l-login a span {
+  margin-right: 3px;
+}
+#l-register form input + small {
+  color: red;
+}
+.fg-line label {
+  margin-bottom: 10px;
+}
 /** VENDOR **/
 .btn-file {
   overflow: hidden;

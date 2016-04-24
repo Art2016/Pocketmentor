@@ -1,4 +1,4 @@
-var baseUrl = 'http://220.69.241.222:3000';
+var baseUrl = '';
 
 exports.map = function(name){
     return baseUrl + name;

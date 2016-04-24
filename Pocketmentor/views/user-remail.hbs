@@ -1,0 +1,45 @@
+<!-- Forgot Password -->
+<div class="lc-block toggled" id="l-forget-password">
+    <div class="lcb-float"><i class="zmdi zmdi-pin-account"></i></div>
+    <form action="/user-remail/{{remail.id}}" method="put" name="emailFrom">
+        <h4><p>인증 이메일을 전송하였습니다.</p><small>메일을 못 받으셨다면 다시 확인 후 재전송 바랍니다.</small></h4>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="이메일을 입력하세요." name="email" value="{{remail.email}}">
+        </div>
+        <input type="submit" class="btn btn-block btn-warning" value="재전송">
+    </form>
+</div>
+
+{{#section 'jquery'}}
+<script>
+    $(document).ready(function () {
+        $.ajaxPrefilter(function (options, originalOptions, jqXHR) {
+            if (options.type.toLowerCase() !== 'get') {
+                jqXHR.setRequestHeader('X-CSRF-Token', '{{_csrfToken}}');
+            }
+        });
+
+        var email = $("input[name=email]");
+        email.focus();
+        
+        $('form').on('submit', function (evt) {
+            evt.preventDefault();
+            var action = $(this).attr('action');
+            $.ajax({
+                type: 'PUT',
+                dataType: 'JSON',
+                data: {
+                    email: email.val(),
+                },
+                url: action,
+            }).done(function (response) {
+                if (response.msg === 'success') {
+                    notify('top', 'right', '', 'success', 'animated fadeIn', 'animated fadeOut', '메일 재발송 완료 :: ', '메일 확인 후 인증을 진행하세요.');
+                } else {
+                    notify('top', 'right', '', 'danger', 'animated fadeIn', 'animated fadeOut', '메일 재발송 실패 :: ', 'Server Error');
+                }
+            });
+        });
+    });
+</script>
+{{/section}}

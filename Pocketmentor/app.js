@@ -116,7 +116,12 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     secret: credentials.cookieSecret,
-    store: sessionStore
+    store: sessionStore,
+    key: 'pocketmento',
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 3,
+        httpOnly: true
+    }
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(require('csurf')());
@@ -130,6 +135,27 @@ app.use(function (req, res, next) {
     if (cluster.isWorker) console.log('Worker %d received request', cluster.worker.id);
     next();
 });
+
+app.use(function (req, res, next) {
+    // 플래시 메시지가 있다면 콘텍스트에 전달한 다음 지웁니다.
+    res.locals.flash = req.session.flash;
+    delete req.session.flash;
+    next();
+});
+/*
+app.use(function (req, res, next) {
+    // 인증되지 않은 아이디 중에 12시간 지난 아이디 삭제
+    var now = new Date();
+    User.find({ userid: new RegExp('^.+:[0-9]+') }, function (err, users) {
+
+    });
+    var a = new Date(2016, 3, 23, 10, 33, 0);
+    var b = new Date();
+    b.setHours(b.getHours() - 1);
+    console.log(b);
+    next();
+});
+*/
 //-----------------------------------------------------------------------------------------------//
 // add routes
 require('./routes.js')(app);
@@ -142,7 +168,7 @@ app.use(function (req, res, next) {
     // 캐쉬가 있으면 뷰를 렌더링합니다.
     if (autoViews[path]) return res.render(autoViews[path]);
     // 캐쉬가 없다면 일치하는 .handlebars 파일이 있는지 확인합니다.
-    if (fs.existsSync(__dirname + '/views' + path + '.handlebars')) {
+    if (fs.existsSync(__dirname + '/views' + path + '.hbs')) {
         autoViews[path] = path.replace(/^\//, '');
         return res.render(autoViews[path]);
     }
@@ -154,12 +180,12 @@ app.use(function (req, res, next) {
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-    res.status(404).render('404');
+    res.status(404).render('404', { layout: null });
 });
 // no stacktraces leaked to user
 app.use(function (err, req, res, next) {
     console.error(err.stack);
-    res.status(500).render('500');
+    res.status(500).render('500', { layout: null });
 });
 
 var server;

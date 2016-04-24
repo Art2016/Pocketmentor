@@ -1,0 +1,456 @@
+{{#section head}}
+    <link href="vendors/chosen_v1.4.2/chosen.min.css" rel="stylesheet">
+{{/section}}
+
+
+<header class="page-header">
+    <h2>프로필 편집</h2>
+</header>
+                
+<div class="tile" id="profile-main">
+    <div class="pm-overview c-overflow-dark">
+        <div class="pmo-pic">
+            <div class="p-relative">
+                <a href="">
+                    <img class="img-responsive" src="img/profile-pics/profile-pic-2.jpg" alt=""> 
+                </a>
+                                
+                <div class="dropdown pmop-message">
+                    <a data-toggle="dropdown" href="" class="pmopm-send">
+                        <i class="zmdi zmdi-comment-text-alt"></i>
+                    </a>
+                                    
+                    <div class="dropdown-menu">
+                        <textarea placeholder="Write something..."></textarea>
+                                        
+                        <button class="btn bg-green btn-icon"><i class="zmdi zmdi-mail-send"></i></button>
+                    </div>
+                </div>
+                                
+                <a href="" class="pmop-edit btn btn-file">
+                    <i class="zmdi zmdi-camera"></i> <span class="hidden-xs ">Update Profile Picture</span><input type="file" name="...">
+                </a>
+            </div>
+            <div class="pmo-stat">
+                <h2 class="m-0 c-white">1562</h2>
+                Total Connections
+            </div>
+        </div>
+                        
+                        
+                        
+        <div class="pmo-block pmo-items hidden-xs">
+            <h2>Connections</h2>
+                            
+            <div class="pmob-body">
+                <div class="row">
+                    <a href="" class="col-xs-2">
+                        <img class="img-avatar" src="img/profile-pics/1.jpg" alt="">
+                    </a>
+                    <a href="" class="col-xs-2">
+                        <img class="img-avatar" src="img/profile-pics/2.jpg" alt="">
+                    </a>
+                    <a href="" class="col-xs-2">
+                        <img class="img-avatar" src="img/profile-pics/3.jpg" alt="">
+                    </a>
+                    <a href="" class="col-xs-2">
+                        <img class="img-avatar" src="img/profile-pics/4.jpg" alt="">
+                    </a>
+                    <a href="" class="col-xs-2">
+                        <img class="img-avatar" src="img/profile-pics/5.jpg" alt="">
+                    </a>
+                    <a href="" class="col-xs-2">
+                        <img class="img-avatar" src="img/profile-pics/6.jpg" alt="">
+                    </a>
+                    <a href="" class="col-xs-2">
+                        <img class="img-avatar" src="img/profile-pics/7.jpg" alt="">
+                    </a>
+                    <a href="" class="col-xs-2">
+                        <img class="img-avatar" src="img/profile-pics/8.jpg" alt="">
+                    </a>
+                    <a href="" class="col-xs-2">
+                        <img class="img-avatar" src="img/profile-pics/1.jpg" alt="">
+                    </a>
+                    <a href="" class="col-xs-2">
+                        <img class="img-avatar" src="img/profile-pics/2.jpg" alt="">
+                    </a>
+                    <a href="" class="col-xs-2">
+                        <img class="img-avatar" src="img/profile-pics/3.jpg" alt="">
+                    </a>
+                    <a href="" class="col-xs-2">
+                        <img class="img-avatar" src="img/profile-pics/4.jpg" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+                    
+    <div class="pm-body clearfix">
+        <ul class="tab-nav tn-justified">
+            <li class="active"><a href="profile-about.html">About</a></li>
+            <li><a href="profile-photos.html">Photos</a></li>
+            <li><a href="profile-connections.html">Connections</a></li>
+        </ul>
+                        
+        <div class="pmb-block">
+            <div class="pmbb-header">
+                <h2><i class="zmdi zmdi-account m-r-5"></i> Basic Information</h2>
+                                
+                <ul class="actions">
+                    <li class="dropdown">
+                        <a href="" data-toggle="dropdown">
+                            <i class="zmdi zmdi-more-vert"></i>
+                        </a>
+                                        
+                        <ul class="dropdown-menu pull-right">
+                            <li>
+                                <a data-pmb-action="edit" href="">Edit</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="pmbb-body p-l-30">
+								
+							
+                <div class="pmbb-view">
+					<dl class="dl-horizontal">
+                        <dt class="p-t-10">이름</dt>
+                        <dd>
+                            <div class="fg-line">
+                                <input type="text" class="form-control" placeholder="" value="김하니">
+                            </div>
+                                            
+                        </dd>
+                    </dl>
+					<dl class="dl-horizontal">
+                        <dt class="p-t-10">이메일</dt>
+                        <dd>
+                            <div class="fg-line">
+                                <input type="eamil" class="form-control" value="rewq@naver.com" >
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl class="dl-horizontal">
+                        <dt class="p-t-10">성별</dt>
+                        <dd>
+                            <div class="fg-line">
+                                <select class="form-control">
+									<option>----</option>
+                                    <option>남</option>
+                                    <option selected="select">여</option>
+                                </select>
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl class="dl-horizontal">
+                        <dt class="p-t-10">생년월일</dt>
+                        <dd>
+                            <div class="dtp-container dropdown fg-line">
+                                <input type='text' class="form-control date-picker" data-toggle="dropdown" placeholder="" value="11/11/1992">
+                            </div>
+                        </dd>
+                    </dl>
+                                    
+                    <div class="m-t-30">
+                        <button class="btn btn-primary btn-sm">Save</button>
+                    </div>
+				<!--
+                    <dl class="dl-horizontal">
+                        <dt>이름</dt>
+                        <dd>김하니</dd>
+                    </dl>
+					<dl class="dl-horizontal">
+                        <dt>이메일</dt>
+                        <dd>rewq@naver.com</dd>
+                    </dl>
+                    <dl class="dl-horizontal">
+                        <dt>성별</dt>
+                        <dd>여</dd>
+                    </dl>
+                    <dl class="dl-horizontal">
+                        <dt>생년월일</dt>
+                        <dd>11/11/1992</dd>
+                    </dl>                   
+					-->
+                </div> 
+                <div class="pmbb-edit">
+                    <dl class="dl-horizontal">
+                        <dt class="p-t-10">이름</dt>
+                        <dd>
+                            <div class="fg-line">
+                                <input type="text" class="form-control">
+                            </div>
+                                            
+                        </dd>
+                    </dl>
+					<dl class="dl-horizontal">
+                        <dt class="p-t-10">이메일</dt>
+                        <dd>
+                            <div class="fg-line">
+                                <input type="eamil" class="form-control" value="rewq@naver.com" >
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl class="dl-horizontal">
+                        <dt class="p-t-10">성별</dt>
+                        <dd>
+                            <div class="fg-line">
+                                <select class="form-control">
+                                    <option>남</option>
+                                    <option>여</option>
+                                </select>
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl class="dl-horizontal">
+                        <dt class="p-t-10">생년월일</dt>
+                        <dd>
+                            <div class="dtp-container dropdown fg-line">
+                                <input type='text' class="form-control date-picker" data-toggle="dropdown" placeholder="Click here...">
+                            </div>
+                        </dd>
+                    </dl>
+                                    
+                    <div class="m-t-30">
+                        <button class="btn btn-primary btn-sm">Save</button>
+                        <button data-pmb-action="reset" class="btn btn-link btn-sm">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+                   
+                    
+        <div class="pmb-block">
+            <div class="pmbb-header">
+                <h2><i class="zmdi zmdi-phone m-r-5"></i> Contact Information</h2>
+                                
+                <ul class="actions">
+                    <li class="dropdown">
+                        <a href="" data-toggle="dropdown">
+                            <i class="zmdi zmdi-more-vert"></i>
+                        </a>
+                                        
+                        <ul class="dropdown-menu pull-right">
+                            <li>
+                                <a data-pmb-action="edit" href="">Edit</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>							
+            <div class="pmbb-body p-l-30">
+                <div class="pmbb-view">
+                    <dl class="dl-horizontal">
+                        <dt class="p-t-10">전화번호</dt>
+                        <dd>
+                            <div class="fg-line">
+                                <input type="text" class="form-control" placeholder="" value="01023215544">
+                            </div>
+                                            
+                        </dd>
+                    </dl>
+					<dl class="dl-horizontal">
+                        <dt class="p-t-10">거주지 도/시</dt>
+                        <dd>
+							<div class="col-md-6" style="padding-left:0;">
+                                <select class="tag-select" data-placeholder="Choose a Country...">
+									<option value="서울">서울</option>
+									<option value="경기">경기</option>
+									<option value="인천">인천</option>
+									<option value="대구" selected="select">대구</option>
+									<option value="부산">부산</option>
+									<option value="광주">광주</option>
+									<option value="대전">대전</option>
+									<option value="울산">울산</option>
+									<option value="세종">세종</option>
+									<option value="강원">강원</option>
+									<option value="충북">충북</option>
+									<option value="충남">충남</option>
+									<option value="전북">전북</option>
+									<option value="전남">전남</option>
+									<option value="경북">경북</option>
+									<option value="경남">경남</option>
+									<option value="제주">제주</option>
+								</select>
+                            </div>
+							<div class="col-md-6">
+                                <select class="tag-select" data-placeholder="Choose a Country...">
+									<option value="United States">United States</option>
+									<option value="United Kingdom">United Kingdom</option>
+									<option value="Afghanistan">Afghanistan</option>
+									<option value="Aland Islands">Aland Islands</option>
+									<option value="Albania">Albania</option>
+									<option value="Algeria">Algeria</option>
+									<option value="American Samoa">American Samoa</option>
+								</select>
+                            </div>
+						</dd>
+                    </dl>
+					<dl class="dl-horizontal">
+                        <dt class="p-t-10">중학교</dt>
+                        <dd>
+							<div>
+                                <select class="tag-select" data-placeholder="Choose a Country...">
+									<option value="서울중학교">서울중학교</option>
+									<option value="경기중학교">경기중학교</option>
+									<option value="인천중학교">인천중학교</option>
+									<option value="대구중학교" selected="select">대구중학교</option>
+									<option value="부산중학교">부산중학교</option>
+									<option value="광주중학교">광주중학교</option>
+									<option value="대전중학교">대전중학교</option>
+									<option value="울산중학교">울산중학교</option>
+									<option value="세종중학교">세종중학교</option>
+									<option value="강원중학교">강원중학교</option>
+									<option value="충북중학교">충북중학교</option>
+									<option value="충남중학교">충남중학교</option>
+									<option value="전북중학교">전북중학교</option>
+									<option value="전남중학교">전남중학교</option>
+									<option value="경북중학교">경북중학교</option>
+									<option value="경남중학교">경남중학교</option>
+									<option value="제주중학교">제주중학교</option>
+								</select>
+                            </div>
+						</dd>
+                    </dl>
+					<dl class="dl-horizontal">
+                        <dt class="p-t-10">고등학교</dt>
+                        <dd>
+							<div>
+                                <select class="tag-select" data-placeholder="Choose a Country...">
+									<option value="서울고등학교">서울고등학교</option>
+									<option value="경기고등학교">경기고등학교</option>
+									<option value="인천고등학교">인천고등학교</option>
+									<option value="대구고등학교" selected="select">대구고등학교</option>
+									<option value="부산고등학교">부산고등학교</option>
+									<option value="광주고등학교">광주고등학교</option>
+									<option value="대전고등학교">대전고등학교</option>
+									<option value="울산고등학교">울산고등학교</option>
+									<option value="세종고등학교">세종고등학교</option>
+									<option value="강원고등학교">강원고등학교</option>
+									<option value="충북고등학교">충북고등학교</option>
+									<option value="충남고등학교">충남고등학교</option>
+									<option value="전북고등학교">전북고등학교</option>
+									<option value="전남고등학교">전남고등학교</option>
+									<option value="경북고등학교">경북고등학교</option>
+									<option value="경남고등학교">경남고등학교</option>
+									<option value="제주고등학교">제주고등학교</option>
+								</select>
+                            </div>
+						</dd>
+                    </dl>
+					<dl class="dl-horizontal">
+                        <dt class="p-t-10">대학교</dt>
+                        <dd>
+							<div>
+                                <select class="tag-select" data-placeholder="Choose a Country...">
+									<option value="서울대학교">서울대학교</option>
+									<option value="경기대학교">경기대학교</option>
+									<option value="인천대학교">인천대학교/option>
+									<option value="대구대학교" selected="select">대구대학교</option>
+									<option value="부산대학교">부산대학교</option>
+									<option value="광주대학교">광주대학교</option>
+									<option value="대전대학교">대전대학교</option>
+									<option value="울산대학교">울산대학교</option>
+									<option value="세종대학교">세종대학교</option>
+									<option value="강원대학교">강원대학교</option>
+									<option value="충북대학교">충북대학교</option>
+									<option value="충남대학교">충남대학교</option>
+									<option value="전북대학교">전북대학교</option>
+									<option value="전남대학교">전남대학교</option>
+									<option value="경북대학교">경북대학교</option>
+									<option value="경남대학교">경남대학교</option>
+									<option value="제주대학교">제주대학교</option>
+								</select>
+                            </div>
+						</dd>
+                    </dl>
+					<dl class="dl-horizontal">
+                        <dt class="p-t-10">관심분야</dt>
+                        <dd>
+                            <div class="fg-line">
+                                <label class="checkbox checkbox-inline cr-alt">
+								<input type="checkbox" id="inlineCheckbox1" value="option1" checked>
+								<i class="input-helper"></i>    
+								학업
+								</label>
+								<label class="checkbox checkbox-inline cr-alt">
+								<input type="checkbox" id="inlineCheckbox2" value="option2" checked>
+								<i class="input-helper"></i>    
+								취업
+								</label>
+								<label class="checkbox-inline cr-alt">
+								<input type="checkbox" id="inlineCheckbox3" value="option3">
+								<i class="input-helper"></i>    
+								경영
+								</label>
+								<label class="checkbox checkbox-inline cr-alt">
+								<input type="checkbox" id="inlineCheckbox1" value="option1" >
+								<i class="input-helper"></i>    
+								학업
+								</label>
+								<label class="checkbox checkbox-inline cr-alt">
+								<input type="checkbox" id="inlineCheckbox2" value="option2" >
+								<i class="input-helper"></i>    
+								취업
+								</label>
+								<label class="checkbox-inline cr-alt">
+								<input type="checkbox" id="inlineCheckbox3" value="option3">
+								<i class="input-helper"></i>    
+								경영
+								</label>
+								<label class="checkbox checkbox-inline cr-alt">
+								<input type="checkbox" id="inlineCheckbox1" value="option1">
+								<i class="input-helper"></i>    
+								학업
+								</label>
+								<label class="checkbox checkbox-inline cr-alt">
+								<input type="checkbox" id="inlineCheckbox2" value="option2">
+								<i class="input-helper"></i>    
+								취업
+								</label>
+								<label class="checkbox-inline cr-alt">
+								<input type="checkbox" id="inlineCheckbox3" value="option3">
+								<i class="input-helper"></i>    
+								경영
+								</label>				
+                            </div>
+                                            
+                        </dd>
+                    </dl>
+					<div class="m-t-30">
+                        <button class="btn btn-primary btn-sm">Save</button>                  
+                    </div>
+                </div>
+                <div class="pmbb-edit">
+                    <dl class="dl-horizontal">
+                        <dt class="p-t-10">Mobile Phone</dt>
+                        <dd>
+                            <div class="fg-line">
+                                <input type="text" class="form-control" placeholder="eg. 00971 12345678 9">
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl class="dl-horizontal">
+                        <dt class="p-t-10">Email Address</dt>
+                        <dd>
+                            <div class="fg-line">
+                                <input type="email" class="form-control" placeholder="eg. malinda.h@gmail.com">
+                            </div>
+                        </dd>
+                    </dl>
+                    <div class="m-t-30">
+                        <button class="btn btn-primary btn-sm">Save</button>
+                        <button data-pmb-action="reset" class="btn btn-link btn-sm">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{#section 'jquery'}}
+    <script src="vendors/bower_components/moment/min/moment.min.js"></script>
+    <script src="vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+	<script src="vendors/chosen_v1.4.2/chosen.jquery.min.js"></script>
+{{/section}}
