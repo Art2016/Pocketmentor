@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <title>http://www.blueb.co.kr</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <style type="text/css">
+        select {
+            display: block;
+        }
+
+            select.replaced {
+                display: none;
+            }
+
+        ul.selectReplacement {
+            display: inline-block;
+            background: url(select.gif) no-repeat;
+            margin: 0;
+            padding: 0;
+            width: 109px;
+            font-family: 돋움;
+            font-size: 12px;
+            letter-spacing: -1px;
+            z-index: 10;
+            position: absolute;
+        }
+
+
+            ul.selectReplacement li {
+                background: #e0e0e0;
+                color: #444;
+                cursor: pointer;
+                display: none;
+                font-size: 12px;
+                line-height: 2em;
+                list-style: none;
+                margin: 0;
+                padding: 0px 10px;
+            }
+
+        ul.selectOpen li {
+            display: block;
+        }
+
+        ul.selectReplacement li.selected {
+            background: url(blank.gif) no-repeat; /*활성되었을때 백그라운드 안가리게*/
+            height: 25px;
+            color: #000; /*선택된 텍스트 색상*/
+            display: block;
+        }
+
+        ul.selectReplacement li:hover {
+            background: url(select.gif) no-repeat 0 -25px;
+            color: #fff;
+        }
+
+
+        ul.selectOpen li.selected {
+            background: #c0c0c0;
+            display: block;
+        }
+
+            ul.selectOpen li:hover,
+            ul.selectOpen li.hover,
+            ul.selectOpen li.selected:hover {
+                background: #777;
+                color: #fff;
+            }
+    </style>
+    <script type="text/javascript" src="select.js"></script>
+</head>
+<body>
+
+    <form action="#" method="post">
+        <select id="something1" name="something1">
+            <option value="1">셀렉트 메뉴 1</option>
+            <option value="1">셀렉트 메뉴 2</option>
+            <option value="1" selected>셀렉트 메뉴 3</option>
+            <option value="1">셀렉트 메뉴 4</option>
+            <option value="1">셀렉트 메뉴 5</option>
+            <option value="1">셀렉트 메뉴 6</option>
+            <option value="1">셀렉트 메뉴 7</option>
+            <option value="1">셀렉트 메뉴 8</option>
+            <option value="1">셀렉트 메뉴 9</option>
+            <option value="1">셀렉트 메뉴 10</option>
+        </select>
+    </form>
+    <select id="something2" name="something2">
+        <option value="1">셀렉트 메뉴 1</option>
+        <option value="1">셀렉트 메뉴 2</option>
+        <option value="1" selected>셀렉트 메뉴 3</option>
+        <option value="1">셀렉트 메뉴 4</option>
+        <option value="1">셀렉트 메뉴 5</option>
+        <option value="1">셀렉트 메뉴 6</option>
+        <option value="1">셀렉트 메뉴 7</option>
+        <option value="1">셀렉트 메뉴 8</option>
+        <option value="1">셀렉트 메뉴 9</option>
+        <option value="1">셀렉트 메뉴 10</option>
+    </select>
+    <select id="something3" name="something3">
+        <option value="1">셀렉트 메뉴 1</option>
+        <option value="1">셀렉트 메뉴 2</option>
+        <option value="1" selected>셀렉트 메뉴 3</option>
+        <option value="1">셀렉트 메뉴 4</option>
+        <option value="1">셀렉트 메뉴 5</option>
+        <option value="1">셀렉트 메뉴 6</option>
+        <option value="1">셀렉트 메뉴 7</option>
+        <option value="1">셀렉트 메뉴 8</option>
+        <option value="1">셀렉트 메뉴 9</option>
+        <option value="1">셀렉트 메뉴 10</option>
+    </select>
+    <div style="z-index:1;">test1</div>
+    <div style="z-index:2;">test2</div>
+    <div style="z-index:3; position:absolute;">test3</div>
+</body>
+</html>

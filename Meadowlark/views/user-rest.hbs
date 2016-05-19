@@ -1,0 +1,162 @@
+{{#section 'head'}}
+<link rel="stylesheet" href="{{static '/stylesheets/user.css'}}">
+<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js"></script>
+<script id="userTemplate" type="text/x-handlebars-template">
+    \{{#each list.users}}
+    <tr>
+        <td><a href="javascripct:;" class="linkshowuser" rel="\{{id}}">\{{username}}</a></td>
+        <td>\{{email}}</td>
+        <td><a href="javascripct:;" class="linkdeleteuser" rel="\{{id}}">delete</a></td>
+    </tr>
+    \{{/each}}
+</script>
+{{/section}}
+<br /><br />
+<div id="wrapper">
+    <div id="userInfo">
+        <h2>User Info</h2>
+        <p>
+            <strong>Name:</strong>
+            <span id='userInfoName'></span>
+            <br />
+            <strong>Age:</strong>
+            <span id='userInfoAge'></span>
+            <br />
+            <strong>Gender:</strong>
+            <span id='userInfoGender'></span>
+            <br />
+            <strong>Location:</strong>
+            <span id='userInfoLocation'></span>
+        </p>
+    </div>
+    <div id="userList">
+        <h2>User List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>UserName</th>
+                    <th>Email</th>
+                    <th>Delete?</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div id="addUser">
+        <fieldset>
+            <input id="inputUserName" type="text" placeholder='Username' />
+            <input id="inputUserEmail" type="text" placeholder='Email' />
+            <br />
+            <input id="inputUserFullname" type="text" placeholder='Full Name' />
+            <input id="inputUserAge" type="text" placeholder='Age' />
+            <br />
+            <input id="inputUserLocation" type="text" placeholder='Location' />
+            <input id="inputUserGender" type="text" placeholder='gender' />
+            <br />
+            <button id="btnAddUser">Add User</button>
+        </fieldset>
+    </div>
+</div>
+{{#section 'jquery'}}
+<script>
+    $(document).ready(function () {
+        $.ajaxPrefilter(function (options, originalOptions, jqXHR) {
+            if (options.type.toLowerCase() !== 'get') {
+                jqXHR.setRequestHeader('X-CSRF-Token', '{{_csrfToken}}');
+            }
+        });
+        populateTable();
+    });
+
+    function populateTable() {
+        var userTemplate = Handlebars.compile($('#userTemplate').html());
+        var $users = $('#userList tbody');
+
+        $.getJSON('/user-rest/all', function (list) {
+            console.log(list.users);
+            $users.html(userTemplate({ list: list }));
+            $('.linkshowuser').off('click').on('click', showUserInfo);
+            $('.linkdeleteuser').off('click').on('click', deleteUser);
+            $('#btnAddUser').off('click').on('click', addUser);
+        });
+    }
+    //--------------------------------Read--------------------------------//
+    function showUserInfo(evt) {
+        evt.preventDefault();
+
+        var id = $(this).attr('rel');
+
+        $.getJSON('/user-rest/' + id, function (data) {
+            $('#userInfoName').text(data.fullname);
+            $('#userInfoAge').text(data.age);
+            $('#userInfoGender').text(data.gender);
+            $('#userInfoLocation').text(data.location);
+        });
+    };
+    //--------------------------------Create--------------------------------//
+    function addUser(evt) {
+        evt.preventDefault();
+
+        var errorCount = 0;
+
+        $('#addUser input').each(function (index, val) {
+            if ($(this).val() === '') { errorCount++; }
+        });
+
+        if (errorCount === 0) {
+            var newUser = {
+                'username': $('#inputUserName').val(),
+                'email': $('#inputUserEmail').val(),
+                'fullname': $('#inputUserFullname').val(),
+                'age': $('#inputUserAge').val(),
+                'location': $('#inputUserLocation').val(),
+                'gender': $('#inputUserGender').val()
+            }
+
+            $.ajax({
+                type: 'POST',
+                data: newUser,
+                url: '/user-rest',
+                dataType: 'JSON'
+            }).done(function (response) {
+                if (response.msg === '') {
+                    $('#addUser fieldset input').val('');
+                    populateTable();
+                }
+                else {
+                    alert('Error: ...숫자?');
+                    console.log(response.msg);
+                }
+            });
+        } else {
+            alert('Please fill in all fields');
+            return false;
+        }
+    };
+    //--------------------------------Delete--------------------------------//
+    function deleteUser(evt) {
+        evt.preventDefault();
+
+        var confirmation = confirm('Are you sure you want to delete this user?');
+
+        if (confirmation === true) {
+            var id = $(this).attr('rel');
+
+            $.ajax({
+                type: 'DELETE',
+                url: '/user-rest/' + id
+            }).done(function (response) {
+                if (response.msg === '') {
+                    populateTable();
+                } else {
+                    alert('Error: ...콘솔창 보삼');
+                    console.log(response.msg);
+                }
+            });
+        } else {
+            return false;
+        }
+    };
+</script>
+{{/section}}

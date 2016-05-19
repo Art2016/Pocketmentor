@@ -1,0 +1,53 @@
+<form class="form-horizontal" role="form" enctype="multipart/form-data"
+      method="POST" action="/contest/vacation-photo/{year}/{month}">
+    <input type="hidden" name="_csrf" value="{{_csrfToken}}">
+    <div class="form-group">
+        <label for="fieldName" class="col-sm-2 control-label">Name</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="fieldName" name="name">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="fieldEmail" class="col-sm-2 control-label">Email</label>
+        <div class="col-sm-10">
+            <input type="email" class="form-control" required id="fieldEmail" name="email">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="fieldPhoto" class="col-sm-2 control-label">Vacation photo</label>
+        <div class="col-sm-10">
+            <input type="file" class="form-control" required accept="image/*"
+                   id="fieldPhoto" data-url="/upload" name="photo">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-4">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</form>
+<hr />
+<span class="btn btn-default">
+    Upload
+    <input type="file" class="form-control" required accept="image/*"
+           id="jqFieldPhoto" data-url="/upload" multiple name="jqPhoto" />
+</span>
+<div id="fileUploads"></div>
+{{#section 'jquery'}}
+    <script src="{{static '/vendor/jqfu/js/vendor/jquery.ui.widget.js'}}"></script>
+    <script src="{{static '/vendor/jqfu/js/jquery.iframe-transport.js'}}"></script>
+    <script src="{{static '/vendor/jqfu/js/jquery.fileupload.js'}}"></script>
+    <script>
+        $('#jqFieldPhoto').fileupload({
+            dataType: 'json',
+            done: function (e, data) {
+                $.each(data.result.files, function (index, file) {
+                    var report = file.originalName;
+                    report += ' (' + file.size + 'byte)';
+                    report += ' ->' + file.url;
+                    $('<p/>').text(report).appendTo($('#fileUploads'));
+                });
+            }
+        });
+    </script>
+{{/section}}

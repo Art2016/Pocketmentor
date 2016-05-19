@@ -1,0 +1,53 @@
+body {
+  padding: 50px;
+  margin: 0;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url("/images/background.png");
+}
+body header {
+  max-width: 640px;
+  margin: 0 auto;
+}
+body header img {
+  width: 100%;
+  border-radius: 50%;
+  padding: 0 5%;
+}
+body header .cart {
+  width: 70px;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+}
+body .container {
+  max-width: 640px;
+  margin: 0 auto;
+}
+body .container .weatherWidget .location {
+  margin: 0;
+  max-width: 250px;
+  padding: 10px 25px;
+}
+body .container .weatherWidget .location img {
+  max-width: 50%;
+  content: "";
+  display: block;
+  clear: both;
+}
+body .container .form-horizontal {
+  margin: 30px 0;
+}
+body .container a.currency {
+  text-decoration: none;
+}
+body .container a.currency.selected {
+  font-weight: bold;
+  font-size: 120%;
+}
+body footer {
+  max-width: 640px;
+  margin: 0 auto;
+}
+body footer hr {
+  border-color: #ccc;
+}
