@@ -20,8 +20,396 @@
     }
 }
 //profile-about
-.fg-line {
-	label {
-		margin-bottom:10px;
+#profile-main {
+    .fileinput-button {
+        overflow: hidden;
+        display: inline-block;
+        input {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 0;
+            opacity: 0;
+            -ms-filter: 'alpha(opacity=0)';
+            font-size: 200px !important;
+            direction: ltr;
+            cursor: pointer;
+        }
+    }
+
+    .fg-line label {
+        margin-bottom: 5px;
+        margin-left: 5px;
+    }
+    .dl-horizontal {
+	    dd .school-hint{
+		    ul {
+			    list-style: none;
+			    width: 100%;
+			    border: 1px solid #ccc;
+			    padding: 0;
+			    li {	
+				    cursor: pointer;
+				    padding: 10px 0 10px 0;
+				    h4 {
+					    margin: 0;
+				    }
+			    }
+			    li:hover {
+				    background-color: #FFFFD4;
+			    }
+		    }
+	    }
+    }
+}
+
+@media (max-width: 991px) {
+	.fg-line label {
+        margin: 5px;
+    }
+	.dl-horizontal {
+		dd {
+			div {
+				padding: 5px 0 0 0;
+			}
+			ul {
+				list-style: none;
+				border: 1px solid #ccc;
+				li {
+					margin: 10px 0 10px 0;
+					h4 {
+						margin: 0;
+						font-size: 14px;
+					}
+					small {
+						font-size: 12px;
+					}
+				}
+			}
+		}
+	}
+}
+//header search
+#header{
+	.top-search {
+        &:not(.toggled){
+            .category-group{
+             display:none;
+          }
+          .ts-search{
+             display:none;
+          }
+        }
+        &.toggled{
+          .category-group{
+                padding: 10px;
+                background-color:#fff;
+                font-size:13px;
+             .dl-horizontal{
+                dd{
+                   .col-md-6{
+                      padding-left:0;
+                   }
+                   .col-md-6:last-child{
+                      padding-right:0;
+                   }
+                   .fg-line{
+                      text-align: left;
+                   }
+                }
+             }
+          }
+          .ts-search{
+             font-size: 11px;
+             color: #fff;
+             position: absolute;
+             top: 50%;
+             right: 48px;
+             z-index: 2;
+             width: 20px;
+             height: 20px;
+             background-color: #8E8E8E;
+             line-height: 20px;
+             border-radius: 50%;
+             margin-top: -10px;
+          }
+          .ts-search:hover{
+             cursor: pointer;
+             background: #333;
+          }
+        }
+    }
+	@media (max-width:768px) {
+		.top-search.toggled {
+			.ts-input {
+				height:40px;
+				font-size: 15px;
+				padding-left:15px;
+			}
+			.zmdi {
+				top:33%;
+			}
+			.category-group {
+				padding-top:0px;
+				font-size:13px;
+				.dl-horizontal {
+					margin-bottom: 0px;
+					dd {
+						.col-md-6 {
+							padding: 0 0 5px 0;
+						}
+						.fg-line {
+							label {
+								margin: 0 5px 5px;
+								float: left;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+
+//==========send-message 페이지==============
+.message-page{
+	padding-top:25px;
+}
+//==========send-message 페이지==============
+
+
+
+	
+//!==========make-my- 페이지 4개의 탭 부분==============!
+#make{
+	.tab-nav{	
+		li{
+			.zmdi{
+				margin-right:5px;
+			}
+		}
+	}
+
+//==========make-my-suggestions==============
+	.t-body{
+		.contacts{
+			.c-info{
+				margin-bottom:10px;
+				position:relative;
+				div{
+					width:90px;
+					margin: 0 auto;
+					padding-top:10px;
+					padding-bottom:10px;
+					.m_point{
+						float:left;
+						margin:0px;
+					}	
+				}
+			}
+		}
+	}
+//==========make-my-suggestions==============
+
+//==========make-my-mentee==============
+	.clearfix{
+		div{
+			.m-title{
+				i{
+					float:left;
+					font-size:25px;
+					margin-right:10px;
+				}
+				h3{
+					margin: 25px 5px;
+				}
+			}
+		
+			.list-personal{
+				.list-group-item{
+					height:60px;
+					.pull-left{
+						margin-right:10px;
+					}
+				}
+			}
+			
+		
+			.group-line{
+				border:1px solid #f4f4f4;
+				margin-bottom:15px;
+				padding:0px 20px;
+				color:#555;
+				
+				.m-group-title{
+					border-bottom:1px solid #eee;
+					margin-bottom:10px;
+					line-height: 50px;
+					.f-700{
+						font-size:20px;
+						float:left;
+
+					}
+					div{
+						span{
+							float:right;
+						}
+					}
+				}
+		
+				.m-group-property{
+					.m-group {
+						margin: 0 5px 10px 0;
+						padding:5px 10px;
+						float:right;
+						background:#fff;
+						border-radius:5px;
+					}
+					.interests{
+						border:2px solid #2196F3;
+						color:#2196F3;
+						font-weight:bold;
+					}
+					.personNum{
+						border:2px solid #4CAF50;
+						color:#4CAF50;
+						font-weight:bold;
+					}
+				}
+			
+				.m-group-name{
+					.pull-left{
+						margin:10px 10px;
+					}
+				}
+			}
+			.group-line:hover{
+				background:#f5f5f5;
+				
+			}
+		}
+	}
+//==========make-my-mentee==============
+
+}
+//!==========make-my- 페이지 4개의 탭 부분==============!
+
+
+//==========send-message==============
+#send-message{
+	.note-title{
+		padding: 20px 23px 0;
+	}
+	.message-btn{
+		padding: 0px 20px 20px;
+		clear:both;
+		button{
+			float:right;
+		}
+	}
+}	
+//==========send-message==============
+
+//==========memo-box==============
+#memo-box{
+	.tab{
+		.tab-pane{
+			display:none;
+			.table{
+				text-align:center;
+				.memo-tr{
+					th{
+						text-align:center;
+					}
+				}
+				.checkbox{
+					margin-left:40%;
+				}
+			}
+			.clearfix{
+				padding-right:20px;
+				padding-bottom:20px;
+				button{
+					float:right;
+				}
+			}
+		}
+		.active{
+			display:block;
+		}
+	}
+}
+//==========memo-box==============
+
+@media(max-width:768px){
+	#make{
+		.tab-nav{
+			li{
+				a{
+					.zmdi{
+						margin-right:0;
+						font-size: 22px;
+					}
+					small{
+						display:none;
+					}
+				}
+			}
+		}
+	
+		.t-body{
+			.contacts{
+				.c-info{
+					button{
+						width:30%;
+						padding:3px;
+					}
+					div{
+						.m_point{
+							display:none;
+						}	
+					}
+				}
+			}
+		}
+	}
+	#send-message{
+		.message-btn{
+			button{
+				width:100%;
+				padding:10px;
+			}
+		}	
+	}	
+}
+
+//===========================search-result===================
+#search-result{
+	.t-body{
+		.contacts{
+			.c-info{
+				margin-bottom:10px;
+				position:relative;
+				div{
+					width:90px;
+					margin: 0 auto;
+					padding: 5px 0;
+					.m_point{
+						float:left;
+						margin:0px;
+					}
+                    strong {
+                        text-align: right;
+                    }
+				}
+				button{
+					font-size:20px;
+					padding:0 5px;
+				}
+			}
+		}
 	}
 }

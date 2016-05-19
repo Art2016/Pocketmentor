@@ -28,6 +28,30 @@ app.engine('hbs', exphbs({
         },
         static: function (name) {
             return static(name);
+        },
+        select: function (value, options) {
+            return options.fn(this)
+                .split('\n')
+                .map(function (v) {
+                    var t = 'value="' + value + '"';
+                    return !RegExp(t).test(v) ? v : v.replace(t, t + ' selected');
+                }).join('\n');
+        },
+        check: function (value, options) {
+            return options.fn(this)
+                .split('\n')
+                .map(function (v) {
+                    var result = '';
+                    for (var i in value) {
+                        var t = 'value="' + value[i] + '"';
+                        if (!RegExp(t).test(v)) {
+                            result = v;
+                        } else {
+                            return v.replace(t, t + ' checked');
+                        }
+                    }
+                    return result;
+                }).join('\n');
         }
     }
 }));
@@ -115,6 +139,7 @@ app.use(cookieParser(credentials.cookieSecret));
 app.use(session({
     resave: false,
     saveUninitialized: false,
+    rolling: true,
     secret: credentials.cookieSecret,
     store: sessionStore,
     key: 'pocketmento',
@@ -142,6 +167,26 @@ app.use(function (req, res, next) {
     delete req.session.flash;
     next();
 });
+
+app.use(function (req, res, next) {
+    // 관심분야 검색
+    res.locals.specialty = req.query.specialty || '?';
+    next();
+});
+
+app.use('/upload/:id/profile', function (req, res, next) {
+    var now = Date.now();
+    var id = req.params.id;
+    console.log(id);
+    jqupload.fileHandler({
+        uploadDir: function () {
+            return __dirname + '/public/uploads/' + id + '/profile';
+        },
+        uploadUrl: function () {
+            return '/uploads/' + id + '/profile';
+        }
+    })(req, res, next);
+});
 /*
 app.use(function (req, res, next) {
     // 인증되지 않은 아이디 중에 12시간 지난 아이디 삭제
@@ -156,38 +201,42 @@ app.use(function (req, res, next) {
     next();
 });
 */
-//-----------------------------------------------------------------------------------------------//
-// add routes
-require('./routes.js')(app);
-
-// add support for auto views
-var autoViews = {};
-
-app.use(function (req, res, next) {
-    var path = req.path.toLowerCase();
-    // 캐쉬가 있으면 뷰를 렌더링합니다.
-    if (autoViews[path]) return res.render(autoViews[path]);
-    // 캐쉬가 없다면 일치하는 .handlebars 파일이 있는지 확인합니다.
-    if (fs.existsSync(__dirname + '/views' + path + '.hbs')) {
-        autoViews[path] = path.replace(/^\//, '');
-        return res.render(autoViews[path]);
+var User = require('./models/user.js');
+User.find(function (err, users) {
+    if (err) return console.log(err);
+    if (users.length) return;
+    
+    for (var i = 0; i < 20; i++) {
+        new User({
+            "userid": "test" + i,
+            "password": "qwe123",
+            "name": "테스트" + i,
+            "email": "leesmsdl@naver.com",
+            "gender": "male",
+            "age": "14/05/2016",
+            "university": "안동대학교",
+            "highSchool": "대구고등학교",
+            "middleSchool": "대구중학교",
+            "region": "서울",
+            "city": "강서구",
+            "point": 10,
+            "picture": "http://220.69.241.222:3000/uploads/572c31b0c0f2c984381dfcbf/profile/2013051511025870579_1.jpg",
+            "date": Date.now(),
+            "mentee": [
+                null
+            ],
+            "mentor": [
+                null
+            ],
+            "specialty": [
+                "취업",
+                "경영"
+            ],
+            "auth": true
+        }).save();
     }
-    // 뷰를 찾을 수 없으므로 404 핸들러에 넘깁니다.
-    next();
 });
-
-// error handlers
-
-// catch 404 and forward to error handler
-app.use(function (req, res, next) {
-    res.status(404).render('404', { layout: null });
-});
-// no stacktraces leaked to user
-app.use(function (err, req, res, next) {
-    console.error(err.stack);
-    res.status(500).render('500', { layout: null });
-});
-
+//-----------------------------------------------------------------------------------------------//
 var server;
 var debug = require('debug')('Porcketmentor');
 var cluster = require('cluster');
@@ -221,3 +270,35 @@ if (cluster.isMaster && app.get('env') === 'production') {
 			'; press Ctrl-C to terminate.');
     });
 }
+
+var io = require('socket.io').listen(server);
+
+// add routes
+require('./routes.js')(app, io);
+
+// add support for auto views
+var autoViews = {};
+app.use(function (req, res, next) {
+    var path = req.path.toLowerCase();
+    // 캐쉬가 있으면 뷰를 렌더링합니다.
+    if (autoViews[path]) return res.render(autoViews[path]);
+    // 캐쉬가 없다면 일치하는 .handlebars 파일이 있는지 확인합니다.
+    if (fs.existsSync(__dirname + '/views' + path + '.hbs')) {
+        autoViews[path] = path.replace(/^\//, '');
+        return res.render(autoViews[path]);
+    }
+    // 뷰를 찾을 수 없으므로 404 핸들러에 넘깁니다.
+    next();
+});
+
+// error handlers
+// catch 404 and forward to error handler
+app.use(function (req, res, next) {
+    res.status(404).render('404', { layout: null });
+});
+// no stacktraces leaked to user
+app.use(function (err, req, res, next) {
+    console.error(err.stack);
+    res.status(500).render('500', { layout: null });
+});
+

@@ -1,0 +1,229 @@
+{{#section 'head'}}
+<link href="vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.css" rel="stylesheet">
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js"></script>
+<script id="mentorTemplate" type="text/x-handlebars-template">
+    \{{#each mentors}}
+    <div class="col-md-2 col-sm-4 col-xs-6">
+        <div class="c-item">
+            <a href="" class="ci-avatar">
+                <img src="\{{picture}}" alt="">
+            </a>
+
+            <div class="c-info">
+                <strong>\{{name}}</strong>
+                <small>\{{specialty}}</small>
+                <small>\{{menteeNum}}</small>
+                <div>
+                    <strong class="m_point">포인트</strong>
+                    <strong>\{{point}}p</strong>
+                </div>
+
+                <button class="btn btn-primary c-white"><i class="zmdi zmdi-email"></i></button>
+                \{{#if mentorAdd}}
+                <button class="btn btn-warning c-white mentor-del"><i class="zmdi zmdi-close"></i></button>
+                \{{else}}
+                <button class="btn btn-warning c-white mentor-add"><i class="zmdi zmdi-account-add"></i></button>
+                \{{/if}}
+                \{{#if favorite}}
+                <button class="btn btn-danger c-white favorite-del"><i class="zmdi zmdi-star"></i></button>
+                \{{else}}
+                <button class="btn btn-danger c-white favorite-add"><i class="zmdi zmdi-star-outline"></i></button>
+                \{{/if}}
+            </div>
+        </div>
+    </div>
+    \{{/each}}
+</script>
+{{/section}}
+
+<div class="container" id="search-result">
+    <header class="page-header">
+        <h3>검색결과<small>최고의 멘토들을 찾아보세요.</small></h3>
+    </header>
+
+    <div class="tile">
+        <div class="t-body tb-padding">
+            <div class="contacts clearfix row">
+                {{#if notmentor}}
+                <p style="text-align:center; margin:0">{{notmentor}}</p>
+                {{/if}}
+                {{#each mentors}}
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                    <div class="c-item" data-id="{{userid}}">
+                        <a href="" class="ci-avatar">
+                            <img src="{{picture}}" alt="">
+                        </a>
+
+                        <div class="c-info">
+                            <strong>{{name}}</strong>
+                            <small>{{specialty}}</small>
+                            <small>{{menteeNum}}</small>
+                            <div>
+                                <strong class="m_point">포인트</strong>
+                                <strong>{{point}}p</strong>
+                            </div>
+
+                            <button class="btn btn-primary c-white"><i class="zmdi zmdi-email"></i></button>
+                            {{#if mentorAdd}}
+                            <button class="btn btn-warning c-white mentor-del"><i class="zmdi zmdi-close"></i></button>
+                            {{else}}
+                            <button class="btn btn-warning c-white mentor-add"><i class="zmdi zmdi-account-add"></i></button>
+                            {{/if}}
+                            {{#if favorite}}
+                            <button class="btn btn-danger c-white favorite-del"><i class="zmdi zmdi-star"></i></button>
+                            {{else}}
+                            <button class="btn btn-danger c-white favorite-add"><i class="zmdi zmdi-star-outline"></i></button>
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+
+    <div class="load-more">
+    </div>
+</div>
+
+{{#section 'jquery'}}
+<script src="/vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.min.js"></script>
+<script>
+    var n = 0;
+    var $more = $('div.load-more');
+
+    $(document).ready(function () {
+        $.ajaxPrefilter(function (options, originalOptions, jqXHR) {
+            if (options.type.toLowerCase() !== 'get') {
+                jqXHR.setRequestHeader('X-CSRF-Token', '{{_csrfToken}}');
+            }
+        });
+
+        if ('{{more}}' == 'true') $more.html('<a href="javascript: moreResult();"><i class="zmdi zmdi-refresh-alt"></i> 더 보기</a>');
+        // click 이벤트 추가
+        $('.favorite-add').click(favoriteAdd);
+        $('.favorite-del').click(favoriteDel);
+        $('.mentor-add').click(mentorAdd);
+        $('.mentor-del').click(mentorDel);
+
+        console.log();
+    });
+
+    function favoriteAdd() {
+        var thisBtn = $(this);
+        var id = thisBtn.parents('.c-item').attr('data-id');
+        
+        swal({
+            title: "멘토를 찜하시겠습니까?",
+            text: "즐겨찾기 멘토 리스트에 추가됩니다.",
+            type: "info",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "예",
+            cancelButtonText: "아니오",
+            closeOnConfirm: false
+        }, function () {
+            $('.confirm.btn').attr('disabled', 'true');
+            $.ajax({
+                type: 'PUT',
+                url: '/search-result/favorite-push/' + id
+            }).done(function (response) {
+                $('.confirm.btn').attr('disabled', null);
+                if (response.msg === 'success') {
+                    swal("찜 완료!", "리스트에 추가되었습니다.", "success");
+                    thisBtn.removeClass('favorite-add').addClass('favorite-del').html('<i class="zmdi zmdi-star">');
+                    $('.favorite-del').click(favoriteDel);
+                } else {
+                    swal("해제 실패!", "서버 에러입니다.", "error");
+                    console.log(response.msg);
+                }
+            });
+        });
+    };
+    function favoriteDel() {
+        var thisBtn = $(this);
+        var id = $(this).parents('.c-item').attr('data-id');
+
+        swal({
+            title: "찜을 해제하시겠습니까?",
+            text: "즐겨찾기 멘토 리스트에서 삭제됩니다.",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "예",
+            cancelButtonText: "아니오",
+            closeOnConfirm: false
+        }, function () {
+            $('.confirm.btn').attr('disabled', 'true');
+            $.ajax({
+                type: 'PUT',
+                url: '/search-result/favorite-pull/' + id
+            }).done(function (response) {
+                $('.confirm.btn').attr('disabled', null);
+                if (response.msg === 'success') {
+                    swal("찜 해제!", "리스트에서 삭제되었습니다.", "success");
+                    thisBtn.removeClass('favorite-del').addClass('favorite-add').html('<i class="zmdi zmdi-star-outline">');
+                    $('.favorite-add').click(favoriteAdd);
+                } else {
+                    swal("해제 실패!", "서버 에러입니다.", "error");
+                    console.log(response.msg);
+                }
+            });
+        });
+    };
+    function mentorAdd () {
+    };
+    function mentorDel () {
+        swal({
+            title: "멘토 관계를 해제하시겠습니까?",
+            text: "멘토 리스트에서 삭제됩니다.",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "예",
+            cancelButtonText: "아니오",
+            closeOnConfirm: false
+        }, function () {
+            swal("해제 완료!", "리스트에서 삭제되었습니다.", "success");
+        });
+    };
+
+    // 더 보기 ajax
+    function moreResult() {
+        var action = $('form[name="searchForm"]').attr('action');
+        n++; // 다음 리스트
+
+        var mentorTemplate = Handlebars.compile($('#mentorTemplate').html());
+        var $mentors = $('div.contacts');
+        
+        var specialty = '{{search.specialty}}';
+        var specialtyArr = (specialty) ? specialty.split(',') : null; // 문자열을 배열로 변환
+        // 현재 쿼리값
+        var search = {
+            'userName': '{{search.userName}}',
+            'bigCity': '{{search.bigCity}}',
+            'city': '{{search.city}}',
+            'middleSchool': '{{search.middleSchool}}',
+            'highSchool': '{{search.highSchool}}',
+            'university': '{{search.university}}',
+            'specialty': specialtyArr
+        }
+        
+        $.ajax({
+            type: 'GET',
+            dataType: 'JSON',
+            data: search,
+            url: action + '/' + n
+        }).done(function (resData) {
+            $mentors.append(mentorTemplate({ mentors: resData.mentors })); // 추가 리스트 append
+            if (!resData.more) $more.html(null); // 데이터가 더 없다면 숨김
+            // click 이벤트 추가
+            $('.favorite-add').click(favoriteAdd);
+            $('.favorite-del').click(favoriteDel);
+            $('.mentor-add').click(mentorAdd);
+            $('.mentor-del').click(mentorDel);
+        });
+    }
+</script>
+{{/section}}

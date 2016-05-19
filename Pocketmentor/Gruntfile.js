@@ -19,7 +19,7 @@ module.exports = function (grunt) {
             all: { src: 'qa/tests-*.js', options: { ui: 'tdd' } }
         },
         jshint: {
-            app: ['app.js',' routes.js', 'public/js/**/*.js', 'lib/**/*.js'],
+            app: ['server.js',' routes.js', 'public/js/**/*.js', 'lib/**/*.js'],
             qa: ['Gruntfile.js', 'public/qa/**/*.js', 'qa/**/*.js']
         },
         less: {
@@ -52,7 +52,7 @@ module.exports = function (grunt) {
         },
         nodemon: {
             dev: {
-                script: 'app.js'
+                script: 'server.js'
             }
         },
         watch: {

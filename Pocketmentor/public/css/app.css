@@ -11018,8 +11018,481 @@ a.thumbnail.active {
 #l-register form input + small {
   color: red;
 }
-.fg-line label {
+#profile-main .fileinput-button {
+  overflow: hidden;
+  display: inline-block;
+}
+#profile-main .fileinput-button input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  opacity: 0;
+  -ms-filter: 'alpha(opacity=0)';
+  font-size: 200px !important;
+  direction: ltr;
+  cursor: pointer;
+}
+#profile-main .fg-line label {
+  margin-bottom: 5px;
+  margin-left: 5px;
+}
+#profile-main .dl-horizontal dd .school-hint ul {
+  list-style: none;
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 0;
+}
+#profile-main .dl-horizontal dd .school-hint ul li {
+  cursor: pointer;
+  padding: 10px 0 10px 0;
+}
+#profile-main .dl-horizontal dd .school-hint ul li h4 {
+  margin: 0;
+}
+#profile-main .dl-horizontal dd .school-hint ul li:hover {
+  background-color: #FFFFD4;
+}
+@media (max-width: 991px) {
+  .fg-line label {
+    margin: 5px;
+  }
+  .dl-horizontal dd div {
+    padding: 5px 0 0 0;
+  }
+  .dl-horizontal dd ul {
+    list-style: none;
+    border: 1px solid #ccc;
+  }
+  .dl-horizontal dd ul li {
+    margin: 10px 0 10px 0;
+  }
+  .dl-horizontal dd ul li h4 {
+    margin: 0;
+    font-size: 14px;
+  }
+  .dl-horizontal dd ul li small {
+    font-size: 12px;
+  }
+}
+#header .top-search:not(.toggled) .category-group {
+  display: none;
+}
+#header .top-search:not(.toggled) .ts-search {
+  display: none;
+}
+#header .top-search.toggled .category-group {
+  padding: 10px;
+  background-color: #fff;
+  font-size: 13px;
+}
+#header .top-search.toggled .category-group .dl-horizontal dd .col-md-6 {
+  padding-left: 0;
+}
+#header .top-search.toggled .category-group .dl-horizontal dd .col-md-6:last-child {
+  padding-right: 0;
+}
+#header .top-search.toggled .category-group .dl-horizontal dd .fg-line {
+  text-align: left;
+}
+#header .top-search.toggled .ts-search {
+  font-size: 11px;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  right: 48px;
+  z-index: 2;
+  width: 20px;
+  height: 20px;
+  background-color: #8E8E8E;
+  line-height: 20px;
+  border-radius: 50%;
+  margin-top: -10px;
+}
+#header .top-search.toggled .ts-search:hover {
+  cursor: pointer;
+  background: #333;
+}
+@media (max-width: 768px) {
+  #header .top-search.toggled .ts-input {
+    height: 40px;
+    font-size: 15px;
+    padding-left: 15px;
+  }
+  #header .top-search.toggled .zmdi {
+    top: 33%;
+  }
+  #header .top-search.toggled .category-group {
+    padding-top: 0px;
+    font-size: 13px;
+  }
+  #header .top-search.toggled .category-group .dl-horizontal {
+    margin-bottom: 0px;
+  }
+  #header .top-search.toggled .category-group .dl-horizontal dd .col-md-6 {
+    padding: 0 0 5px 0;
+  }
+  #header .top-search.toggled .category-group .dl-horizontal dd .fg-line label {
+    margin: 0 5px 5px;
+    float: left;
+  }
+}
+.message-page {
+  padding-top: 25px;
+}
+#make .tab-nav li .zmdi {
+  margin-right: 5px;
+}
+#make .t-body .contacts .c-info {
   margin-bottom: 10px;
+  position: relative;
+}
+#make .t-body .contacts .c-info div {
+  width: 90px;
+  margin: 0 auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+#make .t-body .contacts .c-info div .m_point {
+  float: left;
+  margin: 0px;
+}
+#make .clearfix div .m-title i,
+#make .dl-horizontal dd div .m-title i,
+#make .container div .m-title i,
+#make .container-fluid div .m-title i,
+#make .row div .m-title i,
+#make .form-horizontal .form-group div .m-title i,
+#make .btn-toolbar div .m-title i,
+#make .btn-group-vertical > .btn-group div .m-title i,
+#make .nav div .m-title i,
+#make .navbar div .m-title i,
+#make .navbar-header div .m-title i,
+#make .navbar-collapse div .m-title i,
+#make .pager div .m-title i,
+#make .panel-body div .m-title i,
+#make .modal-footer div .m-title i {
+  float: left;
+  font-size: 25px;
+  margin-right: 10px;
+}
+#make .clearfix div .m-title h3,
+#make .dl-horizontal dd div .m-title h3,
+#make .container div .m-title h3,
+#make .container-fluid div .m-title h3,
+#make .row div .m-title h3,
+#make .form-horizontal .form-group div .m-title h3,
+#make .btn-toolbar div .m-title h3,
+#make .btn-group-vertical > .btn-group div .m-title h3,
+#make .nav div .m-title h3,
+#make .navbar div .m-title h3,
+#make .navbar-header div .m-title h3,
+#make .navbar-collapse div .m-title h3,
+#make .pager div .m-title h3,
+#make .panel-body div .m-title h3,
+#make .modal-footer div .m-title h3 {
+  margin: 25px 5px;
+}
+#make .clearfix div .list-personal .list-group-item,
+#make .dl-horizontal dd div .list-personal .list-group-item,
+#make .container div .list-personal .list-group-item,
+#make .container-fluid div .list-personal .list-group-item,
+#make .row div .list-personal .list-group-item,
+#make .form-horizontal .form-group div .list-personal .list-group-item,
+#make .btn-toolbar div .list-personal .list-group-item,
+#make .btn-group-vertical > .btn-group div .list-personal .list-group-item,
+#make .nav div .list-personal .list-group-item,
+#make .navbar div .list-personal .list-group-item,
+#make .navbar-header div .list-personal .list-group-item,
+#make .navbar-collapse div .list-personal .list-group-item,
+#make .pager div .list-personal .list-group-item,
+#make .panel-body div .list-personal .list-group-item,
+#make .modal-footer div .list-personal .list-group-item {
+  height: 60px;
+}
+#make .clearfix div .list-personal .list-group-item .pull-left,
+#make .dl-horizontal dd div .list-personal .list-group-item .pull-left,
+#make .container div .list-personal .list-group-item .pull-left,
+#make .container-fluid div .list-personal .list-group-item .pull-left,
+#make .row div .list-personal .list-group-item .pull-left,
+#make .form-horizontal .form-group div .list-personal .list-group-item .pull-left,
+#make .btn-toolbar div .list-personal .list-group-item .pull-left,
+#make .btn-group-vertical > .btn-group div .list-personal .list-group-item .pull-left,
+#make .nav div .list-personal .list-group-item .pull-left,
+#make .navbar div .list-personal .list-group-item .pull-left,
+#make .navbar-header div .list-personal .list-group-item .pull-left,
+#make .navbar-collapse div .list-personal .list-group-item .pull-left,
+#make .pager div .list-personal .list-group-item .pull-left,
+#make .panel-body div .list-personal .list-group-item .pull-left,
+#make .modal-footer div .list-personal .list-group-item .pull-left {
+  margin-right: 10px;
+}
+#make .clearfix div .group-line,
+#make .dl-horizontal dd div .group-line,
+#make .container div .group-line,
+#make .container-fluid div .group-line,
+#make .row div .group-line,
+#make .form-horizontal .form-group div .group-line,
+#make .btn-toolbar div .group-line,
+#make .btn-group-vertical > .btn-group div .group-line,
+#make .nav div .group-line,
+#make .navbar div .group-line,
+#make .navbar-header div .group-line,
+#make .navbar-collapse div .group-line,
+#make .pager div .group-line,
+#make .panel-body div .group-line,
+#make .modal-footer div .group-line {
+  border: 1px solid #f4f4f4;
+  margin-bottom: 15px;
+  padding: 0px 20px;
+  color: #555;
+}
+#make .clearfix div .group-line .m-group-title,
+#make .dl-horizontal dd div .group-line .m-group-title,
+#make .container div .group-line .m-group-title,
+#make .container-fluid div .group-line .m-group-title,
+#make .row div .group-line .m-group-title,
+#make .form-horizontal .form-group div .group-line .m-group-title,
+#make .btn-toolbar div .group-line .m-group-title,
+#make .btn-group-vertical > .btn-group div .group-line .m-group-title,
+#make .nav div .group-line .m-group-title,
+#make .navbar div .group-line .m-group-title,
+#make .navbar-header div .group-line .m-group-title,
+#make .navbar-collapse div .group-line .m-group-title,
+#make .pager div .group-line .m-group-title,
+#make .panel-body div .group-line .m-group-title,
+#make .modal-footer div .group-line .m-group-title {
+  border-bottom: 1px solid #eee;
+  margin-bottom: 10px;
+  line-height: 50px;
+}
+#make .clearfix div .group-line .m-group-title .f-700,
+#make .dl-horizontal dd div .group-line .m-group-title .f-700,
+#make .container div .group-line .m-group-title .f-700,
+#make .container-fluid div .group-line .m-group-title .f-700,
+#make .row div .group-line .m-group-title .f-700,
+#make .form-horizontal .form-group div .group-line .m-group-title .f-700,
+#make .btn-toolbar div .group-line .m-group-title .f-700,
+#make .btn-group-vertical > .btn-group div .group-line .m-group-title .f-700,
+#make .nav div .group-line .m-group-title .f-700,
+#make .navbar div .group-line .m-group-title .f-700,
+#make .navbar-header div .group-line .m-group-title .f-700,
+#make .navbar-collapse div .group-line .m-group-title .f-700,
+#make .pager div .group-line .m-group-title .f-700,
+#make .panel-body div .group-line .m-group-title .f-700,
+#make .modal-footer div .group-line .m-group-title .f-700 {
+  font-size: 20px;
+  float: left;
+}
+#make .clearfix div .group-line .m-group-title div span,
+#make .dl-horizontal dd div .group-line .m-group-title div span,
+#make .container div .group-line .m-group-title div span,
+#make .container-fluid div .group-line .m-group-title div span,
+#make .row div .group-line .m-group-title div span,
+#make .form-horizontal .form-group div .group-line .m-group-title div span,
+#make .btn-toolbar div .group-line .m-group-title div span,
+#make .btn-group-vertical > .btn-group div .group-line .m-group-title div span,
+#make .nav div .group-line .m-group-title div span,
+#make .navbar div .group-line .m-group-title div span,
+#make .navbar-header div .group-line .m-group-title div span,
+#make .navbar-collapse div .group-line .m-group-title div span,
+#make .pager div .group-line .m-group-title div span,
+#make .panel-body div .group-line .m-group-title div span,
+#make .modal-footer div .group-line .m-group-title div span {
+  float: right;
+}
+#make .clearfix div .group-line .m-group-property .m-group,
+#make .dl-horizontal dd div .group-line .m-group-property .m-group,
+#make .container div .group-line .m-group-property .m-group,
+#make .container-fluid div .group-line .m-group-property .m-group,
+#make .row div .group-line .m-group-property .m-group,
+#make .form-horizontal .form-group div .group-line .m-group-property .m-group,
+#make .btn-toolbar div .group-line .m-group-property .m-group,
+#make .btn-group-vertical > .btn-group div .group-line .m-group-property .m-group,
+#make .nav div .group-line .m-group-property .m-group,
+#make .navbar div .group-line .m-group-property .m-group,
+#make .navbar-header div .group-line .m-group-property .m-group,
+#make .navbar-collapse div .group-line .m-group-property .m-group,
+#make .pager div .group-line .m-group-property .m-group,
+#make .panel-body div .group-line .m-group-property .m-group,
+#make .modal-footer div .group-line .m-group-property .m-group {
+  margin: 0 5px 10px 0;
+  padding: 5px 10px;
+  float: right;
+  background: #fff;
+  border-radius: 5px;
+}
+#make .clearfix div .group-line .m-group-property .interests,
+#make .dl-horizontal dd div .group-line .m-group-property .interests,
+#make .container div .group-line .m-group-property .interests,
+#make .container-fluid div .group-line .m-group-property .interests,
+#make .row div .group-line .m-group-property .interests,
+#make .form-horizontal .form-group div .group-line .m-group-property .interests,
+#make .btn-toolbar div .group-line .m-group-property .interests,
+#make .btn-group-vertical > .btn-group div .group-line .m-group-property .interests,
+#make .nav div .group-line .m-group-property .interests,
+#make .navbar div .group-line .m-group-property .interests,
+#make .navbar-header div .group-line .m-group-property .interests,
+#make .navbar-collapse div .group-line .m-group-property .interests,
+#make .pager div .group-line .m-group-property .interests,
+#make .panel-body div .group-line .m-group-property .interests,
+#make .modal-footer div .group-line .m-group-property .interests {
+  border: 2px solid #2196F3;
+  color: #2196F3;
+  font-weight: bold;
+}
+#make .clearfix div .group-line .m-group-property .personNum,
+#make .dl-horizontal dd div .group-line .m-group-property .personNum,
+#make .container div .group-line .m-group-property .personNum,
+#make .container-fluid div .group-line .m-group-property .personNum,
+#make .row div .group-line .m-group-property .personNum,
+#make .form-horizontal .form-group div .group-line .m-group-property .personNum,
+#make .btn-toolbar div .group-line .m-group-property .personNum,
+#make .btn-group-vertical > .btn-group div .group-line .m-group-property .personNum,
+#make .nav div .group-line .m-group-property .personNum,
+#make .navbar div .group-line .m-group-property .personNum,
+#make .navbar-header div .group-line .m-group-property .personNum,
+#make .navbar-collapse div .group-line .m-group-property .personNum,
+#make .pager div .group-line .m-group-property .personNum,
+#make .panel-body div .group-line .m-group-property .personNum,
+#make .modal-footer div .group-line .m-group-property .personNum {
+  border: 2px solid #4CAF50;
+  color: #4CAF50;
+  font-weight: bold;
+}
+#make .clearfix div .group-line .m-group-name .pull-left,
+#make .dl-horizontal dd div .group-line .m-group-name .pull-left,
+#make .container div .group-line .m-group-name .pull-left,
+#make .container-fluid div .group-line .m-group-name .pull-left,
+#make .row div .group-line .m-group-name .pull-left,
+#make .form-horizontal .form-group div .group-line .m-group-name .pull-left,
+#make .btn-toolbar div .group-line .m-group-name .pull-left,
+#make .btn-group-vertical > .btn-group div .group-line .m-group-name .pull-left,
+#make .nav div .group-line .m-group-name .pull-left,
+#make .navbar div .group-line .m-group-name .pull-left,
+#make .navbar-header div .group-line .m-group-name .pull-left,
+#make .navbar-collapse div .group-line .m-group-name .pull-left,
+#make .pager div .group-line .m-group-name .pull-left,
+#make .panel-body div .group-line .m-group-name .pull-left,
+#make .modal-footer div .group-line .m-group-name .pull-left {
+  margin: 10px 10px;
+}
+#make .clearfix div .group-line:hover,
+#make .dl-horizontal dd div .group-line:hover,
+#make .container div .group-line:hover,
+#make .container-fluid div .group-line:hover,
+#make .row div .group-line:hover,
+#make .form-horizontal .form-group div .group-line:hover,
+#make .btn-toolbar div .group-line:hover,
+#make .btn-group-vertical > .btn-group div .group-line:hover,
+#make .nav div .group-line:hover,
+#make .navbar div .group-line:hover,
+#make .navbar-header div .group-line:hover,
+#make .navbar-collapse div .group-line:hover,
+#make .pager div .group-line:hover,
+#make .panel-body div .group-line:hover,
+#make .modal-footer div .group-line:hover {
+  background: #f5f5f5;
+}
+#send-message .note-title {
+  padding: 20px 23px 0;
+}
+#send-message .message-btn {
+  padding: 0px 20px 20px;
+  clear: both;
+}
+#send-message .message-btn button {
+  float: right;
+}
+#memo-box .tab .tab-pane {
+  display: none;
+}
+#memo-box .tab .tab-pane .table {
+  text-align: center;
+}
+#memo-box .tab .tab-pane .table .memo-tr th {
+  text-align: center;
+}
+#memo-box .tab .tab-pane .table .checkbox {
+  margin-left: 40%;
+}
+#memo-box .tab .tab-pane .clearfix,
+#memo-box .tab .tab-pane .dl-horizontal dd,
+#memo-box .tab .tab-pane .container,
+#memo-box .tab .tab-pane .container-fluid,
+#memo-box .tab .tab-pane .row,
+#memo-box .tab .tab-pane .form-horizontal .form-group,
+#memo-box .tab .tab-pane .btn-toolbar,
+#memo-box .tab .tab-pane .btn-group-vertical > .btn-group,
+#memo-box .tab .tab-pane .nav,
+#memo-box .tab .tab-pane .navbar,
+#memo-box .tab .tab-pane .navbar-header,
+#memo-box .tab .tab-pane .navbar-collapse,
+#memo-box .tab .tab-pane .pager,
+#memo-box .tab .tab-pane .panel-body,
+#memo-box .tab .tab-pane .modal-footer {
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
+#memo-box .tab .tab-pane .clearfix button,
+#memo-box .tab .tab-pane .dl-horizontal dd button,
+#memo-box .tab .tab-pane .container button,
+#memo-box .tab .tab-pane .container-fluid button,
+#memo-box .tab .tab-pane .row button,
+#memo-box .tab .tab-pane .form-horizontal .form-group button,
+#memo-box .tab .tab-pane .btn-toolbar button,
+#memo-box .tab .tab-pane .btn-group-vertical > .btn-group button,
+#memo-box .tab .tab-pane .nav button,
+#memo-box .tab .tab-pane .navbar button,
+#memo-box .tab .tab-pane .navbar-header button,
+#memo-box .tab .tab-pane .navbar-collapse button,
+#memo-box .tab .tab-pane .pager button,
+#memo-box .tab .tab-pane .panel-body button,
+#memo-box .tab .tab-pane .modal-footer button {
+  float: right;
+}
+#memo-box .tab .active {
+  display: block;
+}
+@media (max-width: 768px) {
+  #make .tab-nav li a .zmdi {
+    margin-right: 0;
+    font-size: 22px;
+  }
+  #make .tab-nav li a small {
+    display: none;
+  }
+  #make .t-body .contacts .c-info button {
+    width: 30%;
+    padding: 3px;
+  }
+  #make .t-body .contacts .c-info div .m_point {
+    display: none;
+  }
+  #send-message .message-btn button {
+    width: 100%;
+    padding: 10px;
+  }
+}
+#search-result .t-body .contacts .c-info {
+  margin-bottom: 10px;
+  position: relative;
+}
+#search-result .t-body .contacts .c-info div {
+  width: 90px;
+  margin: 0 auto;
+  padding: 5px 0;
+}
+#search-result .t-body .contacts .c-info div .m_point {
+  float: left;
+  margin: 0px;
+}
+#search-result .t-body .contacts .c-info div strong {
+  text-align: right;
+}
+#search-result .t-body .contacts .c-info button {
+  font-size: 20px;
+  padding: 0 5px;
 }
 /** VENDOR **/
 .btn-file {

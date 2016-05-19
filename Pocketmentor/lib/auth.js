@@ -62,16 +62,9 @@ module.exports = function (app, options){
                         userid: authId,
                         password: null,
                         name: profile.displayName,
-                        email: profile.emails ? profile.emails[0].value : null,
-                        gender : profile.gender ? profile.gender : null,
-                        age : null,
-                        university: null,
-                        highSchool: null,
-                        middleSchool: null,
-                        address: null,
-                        specialty: null,
-                        point: null,
-                        mento: null
+                        email: profile.emails ? profile.emails[0].value : '',
+                        gender : profile.gender ? profile.gender : '',
+                        auth: true
 					});
 					user.save(function(err){
 						if(err) return done(err, null);
@@ -95,16 +88,9 @@ module.exports = function (app, options){
                         userid: authId,
                         password: null,
                         name: profile.displayName,
-                        email: profile.emails ? profile.emails[0].value : null,
-                        gender : profile.gender ? profile.gender : null,
-                        age : null,
-                        university: null,
-                        highSchool: null,
-                        middleSchool: null,
-                        address: null,
-                        specialty: null,
-                        point: null,
-                        mento: null
+                        email: profile.emails ? profile.emails[0].value : '',
+                        gender : profile.gender ? profile.gender : '',
+                        auth: true
                     });
 					user.save(function(err){
 						if(err) return done(err, null);

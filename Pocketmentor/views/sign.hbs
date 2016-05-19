@@ -1,86 +1,87 @@
-        <!-- Login -->
-        <div class="lc-block toggled" id="l-login">
-            <div class="lcb-float"><i class="zmdi zmdi-pin-account"></i></div>
-            <form action="/login" method="post">
-                <input type="hidden" name="_csrf" value="{{_csrfToken}}">
-                <div class="form-group">
-                    <input type="text" class="form-control" name="userid" placeholder="아이디">
-                </div>
-
-                <div class="form-group">
-                    <input type="password" class="form-control" name="password" placeholder="비밀번호" onkeypress="capLock(event)">
-                    <small class="capslock"></small>
-                </div>
-                <input type="submit" class="btn btn-block btn-primary btn-float m-t-20" value="로그인">
-            </form>
-            <div class="m-t-10 f-700">또는</div>
-            <a href="/auth/facebook" class="btn btn-block bg-indigo btn-float m-t-10 "><span class="zmdi zmdi-facebook-box zmdi-hc-fw"></span>FaceBook으로 로그인</a>
-            <a href="/auth/google" class="btn btn-block bg-red btn-float m-t-10"><span class="zmdi zmdi-google-plus zmdi-hc-fw"></span>Google으로 로그인</a>
-            <ul class="login-navigation">
-                <li data-block="#l-register" class="bg-green">회원가입</li>
-                <li data-block="#l-forget-password" class="bg-orange">비밀번호 찾기</li>
-            </ul>
+<!-- Login -->
+<div class="lc-block toggled" id="l-login">
+    <div class="lcb-float"><i class="zmdi zmdi-pin-account"></i></div>
+    <form action="/login" method="post">
+        <input type="hidden" name="_csrf" value="{{_csrfToken}}">
+        <div class="form-group">
+            <input type="text" class="form-control" name="userid" placeholder="아이디">
         </div>
+
+        <div class="form-group">
+            <input type="password" class="form-control" name="password" placeholder="비밀번호" onkeypress="capLock(event)">
+            <small class="capslock"></small>
+        </div>
+        <input type="submit" class="btn btn-block btn-primary btn-float m-t-20" value="로그인">
+    </form>
+    <div class="m-t-10 f-700">또는</div>
+    <a href="/auth/facebook" class="btn btn-block bg-indigo btn-float m-t-10 "><span class="zmdi zmdi-facebook-box zmdi-hc-fw"></span>Facebook으로 로그인</a>
+    <a href="/auth/google" class="btn btn-block bg-red btn-float m-t-10"><span class="zmdi zmdi-google-plus zmdi-hc-fw"></span>Google으로 로그인</a>
+    <ul class="login-navigation">
+        <li data-block="#l-register" class="bg-green">회원가입</li>
+        <li data-block="#l-forget-password" class="bg-orange">비밀번호 찾기</li>
+    </ul>
+</div>
         
-        <!-- Register -->
-        <div class="lc-block" id="l-register">
-            <div class="lcb-float"><i class="zmdi zmdi-pin-account"></i></div>
-            <form action="/register" method="post">
-                <input type="hidden" name="_csrf" value="{{_csrfToken}}">
-                <div class="form-group">
-                    <input type="text" class="form-control" name="userid" placeholder="아이디" pattern="[a-z0-9]{6,14}" title="6~14 영문 소문자, 숫자만 사용 가능합니다." maxlength="14" required>
-                    <small class="already"></small>
-                </div>
-                <div class="form-group">
-                    <input type="password" class="form-control" name="password" placeholder="비밀번호" maxlength="16" pattern="(?=.*[a-zA-Z])(?=.*[0-9]).{6,14}" title="6~14 영문 소문자, 숫자 또는 특수문자를 조합하여 사용하세요." onkeypress="capLock(event)" required>
-                    <small class="capslock"></small>
-                </div>
-                <div class="form-group">
-                    <input type="email" class="form-control" name="email" placeholder="이메일" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="이메일 형식이 아닙니다." required>
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="name" placeholder="이름" pattern="[가-힣a-zA-Z]{2,20}" title="잘못된 형식입니다." required>
-                </div>
-                <div class="clearfix"></div>
-
-                <div>
-                    <label>
-                        <i class="input-helper"></i>
-                        약관 및 개인정보취급방침에 동의
-                    </label>
-                </div>
-
-                <input type="submit" class="btn btn-block btn-success m-t-25" value="회원가입">
-            </form>
-            <ul class="login-navigation">
-                <li data-block="#l-login" class="bg-blue">로그인</li>
-                <li data-block="#l-forget-password" class="bg-orange">비밀번호 찾기</li>
-            </ul>
+<!-- Register -->
+<div class="lc-block" id="l-register">
+    <div class="lcb-float"><i class="zmdi zmdi-pin-account"></i></div>
+    <form action="/register" method="post">
+        <input type="hidden" name="_csrf" value="{{_csrfToken}}">
+        <div class="form-group">
+            <input type="text" class="form-control" name="userid" placeholder="아이디" pattern="[a-z0-9]{6,14}" title="6~14 영문 소문자, 숫자만 사용 가능합니다." maxlength="14" required>
+            <small class="already"></small>
         </div>
+        <div class="form-group">
+            <input type="password" class="form-control" name="password" placeholder="비밀번호" maxlength="16" pattern="(?=.*[a-zA-Z])(?=.*[0-9]).{6,14}" title="6~14 영문 소문자, 숫자 또는 특수문자를 조합하여 사용하세요." onkeypress="capLock(event)" required>
+            <small class="capslock"></small>
+        </div>
+        <div class="form-group">
+            <input type="email" class="form-control" name="email" placeholder="이메일" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="이메일 형식이 아닙니다." required>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" name="name" placeholder="이름" pattern="[가-힣a-zA-Z]{2,20}" title="잘못된 형식입니다." required>
+        </div>
+        <div class="clearfix"></div>
+
+        <div>
+            <label>
+                <i class="input-helper"></i>
+                약관 및 개인정보취급방침에 동의
+            </label>
+        </div>
+
+        <input type="submit" class="btn btn-block btn-success m-t-25" value="회원가입">
+    </form>
+    <ul class="login-navigation">
+        <li data-block="#l-login" class="bg-blue">로그인</li>
+        <li data-block="#l-forget-password" class="bg-orange">비밀번호 찾기</li>
+    </ul>
+</div>
         
-        <!-- Forgot Password -->
-        <div class="lc-block" id="l-forget-password">
-            <div class="lcb-float"><i class="zmdi zmdi-pin-account"></i></div>
+<!-- Forgot Password -->
+<div class="lc-block" id="l-forget-password">
+    <div class="lcb-float"><i class="zmdi zmdi-pin-account"></i></div>
 
-            <small class="m-b-15 d-block">가입하신 이메일 주소를 사용해서 비밀번호를 찾을 수 있도록 도와 드리겠습니다.</small>
+    <small class="m-b-15 d-block">가입하신 이메일 주소를 사용해서 비밀번호를 찾을 수 있도록 도와 드리겠습니다.</small>
             
-            <form action="" method="post">
-                <div class="form-group">
-                    <input type="text" class="form-control" name="userid" placeholder="아이디" required>
-                    <input type="email" class="form-control" placeholder="이메일" required>
-                </div>
-            
-                <input type="submit" class="btn btn-block btn-warning" value="전송">
-            </form>
-            
-            <ul class="login-navigation">
-                <li data-block="#l-login" class="bg-blue">로그인</li>
-                <li data-block="#l-register" class="bg-green">회원가입</li>
-            </ul>
+    <form action="" method="post">
+        <div class="form-group">
+            <input type="text" class="form-control" name="userid" placeholder="아이디" required>
+            <input type="email" class="form-control" placeholder="이메일" required>
         </div>
+            
+        <input type="submit" class="btn btn-block btn-warning" value="전송">
+    </form>
+            
+    <ul class="login-navigation">
+        <li data-block="#l-login" class="bg-blue">로그인</li>
+        <li data-block="#l-register" class="bg-green">회원가입</li>
+    </ul>
+</div>
 
 {{#section 'jquery'}}
     <script>
+        // 아이디 중복 체크
         $(document).ready(function () {
             $userid = $('#l-register input[name="userid"]');
             $userid.blur(function () {
@@ -94,7 +95,7 @@
                 });
             });
         });
-
+        // Caps Lock 체크
         function capLock(e){
             kc = e.keyCode?e.keyCode:e.which;
             sk = e.shiftKey?e.shiftKey:((kc == 16)?true:false);

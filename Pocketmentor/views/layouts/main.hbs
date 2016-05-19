@@ -12,15 +12,24 @@
 
         <title>Pocketmentor</title>
 
-        <link href="vendors/bower_components/animate.css/animate.min.css" rel="stylesheet">
-        <link href="vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet">
-        <link href="vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+        <link href="/vendors/bower_components/animate.css/animate.min.css" rel="stylesheet">
+        <link href="/vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet">
+        <link href="/vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+        <link href="/vendors/bower_components/bootstrap-select/dist/css/bootstrap-select.css" rel="stylesheet">
 
-        <link href="css/demo.css" rel="stylesheet">
+        <link href="/css/demo.css" rel="stylesheet">
 
         {{{_sections.head}}}
 
-        <link href="css/app.min.css" rel="stylesheet">
+        <link href="/css/app.min.css" rel="stylesheet">
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js"></script>
+        <script id="cityTemplate" type="text/x-handlebars-template">
+            <option value="">시/군/구 선택</option>
+            \{{#each cities}}
+            <option value="\{{this}}">\{{this}}</option>
+            \{{/each}}
+        </script>
     </head>
     <body>
         <header id="header" class="clearfix" data-spy="affix" data-offset-top="65">
@@ -28,7 +37,7 @@
 
                 <!-- Logo -->
                 <li class="logo">
-                    <a href=""><img src="img/logo.png" alt=""></a>
+                    <a href=""><img src="/img/logo.png" alt=""></a>
                     <div id="menu-trigger"><i class="zmdi zmdi-menu"></i></div>
                 </li>
 
@@ -51,7 +60,7 @@
                         <div class="list-group lg-alt">
                             <a class="list-group-item media" href="">
                                 <div class="pull-left">
-                                    <img class="img-avatar" src="img/profile-pics/1.jpg" alt="" width="40" height="40">
+                                    <img class="img-avatar" src="/img/profile-pics/1.jpg" alt="" width="40" height="40">
                                 </div>
                                 <div class="media-body">
                                     <div class="list-group-item-heading">David Villa Jacobs <small>3 Hours ago</small></div>
@@ -61,7 +70,7 @@
 
                             <a class="list-group-item media" href="">
                                 <div class="pull-left">
-                                    <img class="img-avatar" src="img/profile-pics/5.jpg" alt="" width="40" height="40">
+                                    <img class="img-avatar" src="/img/profile-pics/5.jpg" alt="" width="40" height="40">
                                 </div>
                                 <div class="media-body">
                                     <div class="list-group-item-heading">Candice Barnes <small>5 Hours ago</small></div>
@@ -71,7 +80,7 @@
 
                             <a class="list-group-item media" href="">
                                 <div class="pull-left">
-                                    <img class="img-avatar" src="img/profile-pics/2.jpg" alt="" width="40" height="40">
+                                    <img class="img-avatar" src="/img/profile-pics/2.jpg" alt="" width="40" height="40">
                                 </div>
                                 <div class="media-body">
                                     <div class="list-group-item-heading">Jeannette Lawson <small>Yesterday</small></div>
@@ -81,7 +90,7 @@
 
                             <a class="list-group-item media" href="">
                                 <div class="pull-left">
-                                    <img class="img-avatar" src="img/profile-pics/4.jpg" alt="" width="40" height="40">
+                                    <img class="img-avatar" src="/img/profile-pics/4.jpg" alt="" width="40" height="40">
                                 </div>
                                 <div class="media-body">
                                     <div class="list-group-item-heading">Darla Mckinney <small>05/06/2014</small></div>
@@ -91,7 +100,7 @@
 
                             <a class="list-group-item media" href="">
                                 <div class="pull-left">
-                                    <img class="img-avatar" src="img/profile-pics/2.jpg" alt="" width="40" height="40">
+                                    <img class="img-avatar" src="/img/profile-pics/2.jpg" alt="" width="40" height="40">
                                 </div>
                                 <div class="media-body">
                                     <div class="list-group-item-heading">Rudolph Perez <small>08/06/2014</small></div>
@@ -121,7 +130,7 @@
                         <div class="list-group lg-alt">
                             <a class="list-group-item media" href="">
                                 <div class="pull-right">
-                                    <img class="img-avatar" src="img/profile-pics/1.jpg" alt="" width="40" height="40">
+                                    <img class="img-avatar" src="/img/profile-pics/1.jpg" alt="" width="40" height="40">
                                 </div>
                                 <div class="media-body">
                                     <div class="list-group-item-heading">David Villa Jacobs <small>3 Hours ago</small></div>
@@ -145,7 +154,7 @@
 
                             <a class="list-group-item media" href="">
                                 <div class="pull-right">
-                                    <img class="img-avatar" src="img/profile-pics/4.jpg" alt="" width="40" height="40">
+                                    <img class="img-avatar" src="/img/profile-pics/4.jpg" alt="" width="40" height="40">
                                 </div>
                                 <div class="media-body">
                                     <div class="list-group-item-heading">Darla Mckinney <small>05/06/2014</small></div>
@@ -155,7 +164,7 @@
 
                             <a class="list-group-item media" href="">
                                 <div class="pull-right">
-                                    <img class="img-avatar" src="img/profile-pics/2.jpg" alt="" width="40" height="40">
+                                    <img class="img-avatar" src="/img/profile-pics/2.jpg" alt="" width="40" height="40">
                                 </div>
                                 <div class="media-body">
                                     <div class="list-group-item-heading">Rudolph Perez <small>08/06/2014</small></div>
@@ -321,12 +330,98 @@
                     </div>
                 </li>
 
-
                 <!-- Search -->
                 <li class="top-search">
-                    <input class="ts-input" placeholder="Search..." type="text">
-
-                    <i class="ts-reset zmdi zmdi-close"></i>
+                    <form name="searchForm" action="/search-result" method="get">
+                        <input type="text" name="userName" class="ts-input" placeholder="이름 입력..." value="{{search.userName}}">
+                        <div class="w-100 category-group">
+                            <dl class="dl-horizontal">
+                                <dt class="p-t-5">거주지 도/시</dt>
+                                <dd>
+                                    <div class="col-md-6">
+                                        <select name="bigCity" class="selectpicker top-bigCity">
+                                            {{#select search.bigCity}}
+                                            <option value="">도시 선택</option>
+                                            <option value="서울">서울</option>
+                                            <option value="경기">경기</option>
+                                            <option value="인천">인천</option>
+                                            <option value="대구">대구</option>
+                                            <option value="부산">부산</option>
+                                            <option value="광주">광주</option>
+                                            <option value="대전">대전</option>
+                                            <option value="울산">울산</option>
+                                            <option value="세종">세종</option>
+                                            <option value="강원">강원</option>
+                                            <option value="충북">충북</option>
+                                            <option value="충남">충남</option>
+                                            <option value="전북">전북</option>
+                                            <option value="전남">전남</option>
+                                            <option value="경북">경북</option>
+                                            <option value="경남">경남</option>
+                                            <option value="제주">제주</option>
+                                            {{/select}}
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <select name="city" class="selectpicker top-city">
+                                            <option value="">시/군/구 선택</option>
+                                            {{! ajax 2차 카테고리}}
+                                        </select>
+                                    </div>
+                                </dd>
+                            </dl>
+                            <dl class="dl-horizontal">
+                                <dt class="p-t-5">중학교</dt>
+                                <dd>
+                                    <div>
+                                        <input type="text" name="middleSchool" id="middleSchool" class="typeahead form-control" placeholder="중학교 선택" value="{{search.middleSchool}}">
+                                    </div>
+                                </dd>
+                            </dl>
+                            <dl class="dl-horizontal">
+                                <dt class="p-t-5">고등학교</dt>
+                                <dd>
+                                    <div>
+                                        <input type="text" name="highSchool" id="highSchool" class="typeahead form-control" placeholder="고등학교 선택" value="{{search.highSchool}}">
+                                    </div>
+                                </dd>
+                            </dl>
+                            <dl class="dl-horizontal">
+                                <dt class="p-t-5">대학교</dt>
+                                <dd>
+                                    <div>
+                                        <input type="text" name="university" id="university" class="typeahead form-control" placeholder="대학교 선택" value="{{search.university}}">
+                                    </div>
+                                </dd>
+                            </dl>
+                            <dl class="dl-horizontal">
+                                <dt class="p-t-5">관심분야</dt>
+                                <dd>
+                                    <div class="fg-line">
+                                        {{#check specialty}}
+                                        <label class="checkbox checkbox-inline cr-alt">
+                                            <input type="checkbox" name="specialty" value="학업">
+                                            <i class="input-helper"></i>
+                                            학업
+                                        </label>
+                                        <label class="checkbox checkbox-inline cr-alt">
+                                            <input type="checkbox" name="specialty" value="취업">
+                                            <i class="input-helper"></i>
+                                            취업
+                                        </label>
+                                        <label class="checkbox-inline cr-alt">
+                                            <input type="checkbox" name="specialty" value="경영">
+                                            <i class="input-helper"></i>
+                                            경영
+                                        </label>
+                                        {{/check}}
+                                    </div>
+                                </dd>
+                            </dl>
+                        </div>
+                        <i class="ts-search zmdi zmdi-search"><input type="submit" style="display:none" /></i>
+                        <i class="ts-reset zmdi zmdi-close"></i>
+                    </form>
                 </li>
 
                 <!-- Settings -->
@@ -413,7 +508,7 @@
             <ul class="side-menu">
                 <li class="sm-sub sms-profile">
                     <a class="clearfix" href="">
-                        <img src="img/profile-pic.jpg" alt="">
+                        <img src="{{user.picture}}" alt="">
 
                         <span class="f-11">
                             <span class="d-block">{{user.name}}</span>
@@ -422,7 +517,7 @@
                     </a>
 
                     <ul>
-                        <li><a href="">View Profile</a></li>
+                        <li><a href="/profile-about">View Profile</a></li>
                         <li><a href="">Privacy Settings</a></li>
                         <li><a href="">Settings</a></li>
                         <li><a href="/logout">Logout</a></li>
@@ -430,7 +525,7 @@
                 </li>
 
                 <li class="active">
-                    <a href="index.html">
+                    <a href="/">
                         <i class="zmdi zmdi-home"></i>
                         <span>Home</span>
                     </a>
@@ -541,9 +636,7 @@
         </aside>
 
         <section id="content">
-            <div class="container">
                 {{{body}}}
-            </div>
         </section>
 
         <footer id="footer">
@@ -601,21 +694,26 @@
             </div>
         <![endif]-->
         <!-- javascript code -->
-        <script src="vendors/bower_components/jquery/dist/jquery.min.js"></script>
-        <script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script src="vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
-        <script src="vendors/bootstrap-growl/bootstrap-growl.min.js"></script>
+
+        <script src="/vendors/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="/vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script src="/vendors/bootstrap-growl/bootstrap-growl.min.js"></script>
+        <script src="/vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
+        <script src="/vendors/bower_components/typeahead.js/dist/typeahead.bundle.min.js"></script>
+        <script src="/vendors/bower_components/typeahead.js/dist/bloodhound.min.js"></script>
         <!-- Placeholder for IE9 -->
         <!--[if IE 9 ]>
             <script src="vendors/bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
         <![endif]-->
-        <script src="js/functions.js"></script>
-        <script src="js/demo.js"></script>
+        <script src="/js/functions.js"></script>
+        <script src="/js/demo.js"></script>
         
         {{{_sections.jquery}}}
 
         {{#if flash}}
             <script>
+                // 플래시 메시지
                 $(document).ready(function () {
                     notify('top', 'right', '', '{{flash.type}}', 'animated fadeIn', 'animated fadeOut', '{{flash.title}}', '{{flash.message}}');
                 });
@@ -623,7 +721,97 @@
         {{/if}}
 
         <script>
+            $(document).bind('touchstart click', function (event) {
+                var item = $('form[name="searchForm"]');
+                var position = item.offset();
+
+                if (typeof (position) !== 'undefined') {
+                    position.right = parseInt(position.left) + (item.width());
+                    position.bottom = parseInt(position.top) + (item.height());
+
+                    if (position.top > event.pageY || position.bottom < event.pageY || position.left > event.pageX || position.right < event.pageX) {
+                        //$('.top-search .ts-input').val('');
+                        $('.top-search').removeClass('toggled');
+                    }
+                }
+            });
+            $(document).ready(function () {
+                var template = {
+                    suggestion: Handlebars.compile("<p style='padding:6px; text-align:left;'><b>\{{name}}</b> :: \{{adres}} </p>"),
+                    footer: Handlebars.compile("<b>Searched for '\{{query}}'</b>")
+                }
+                // Instantiate the Typeahead UI
+                $('#middleSchool.typeahead').typeahead(null, {
+                    displayKey: 'name',
+                    source: selectSchool('midd_list'),
+                    templates: template
+                });
+                $('#highSchool.typeahead').typeahead(null, {
+                    displayKey: 'name',
+                    source: selectSchool('high_list'),
+                    templates: template
+                });
+                $('#university.typeahead').typeahead(null, {
+                    displayKey: 'name',
+                    source: selectSchool('univ_list'),
+                    templates: template
+                });
+
+                cityCategoryChange($('.top-bigCity option:selected').val(), $('select.top-city'), '{{search.city}}');
+                $('.top-bigCity').change(function () {
+                    cityCategoryChange($('.top-bigCity option:selected').val(), $('select.top-city'));
+                });
+
+                // 검색 form 연결
+                $(".ts-search").click(function () {
+                    $('form[name="searchForm"]').submit();
+                });
+            });
+
+            // facebook hash remove
             if (window.location.hash && window.location.hash == '#_=_') window.location.hash = '';
+
+            // 학교 선택
+            function selectSchool(gubun) {
+                // Instantiate the Bloodhound suggestion engine
+                var schools = new Bloodhound({
+                    datumTokenizer: function (datum) {
+                        return Bloodhound.tokenizers.whitespace(datum.value);
+                    },
+                    queryTokenizer: Bloodhound.tokenizers.whitespace,
+                    remote: {
+                        url: '/jsonSchool/%QUERY/divSchool/' + gubun,
+                        wildcard: '%QUERY',
+                        transform: function (schools) {
+                            console.log(schools);
+                            // Map the remote source JSON array to a JavaScript object array
+                            return $.map(schools.content, function (school) {
+                                return {
+                                    name: school.schoolName,
+                                    adres: school.adres
+                                };
+                            });
+                        }
+                    }
+                });
+                return schools;
+            }
+            // 거주지 선택
+            function cityCategoryChange(bigCity, city, userCity) {
+                var cityTemplate = Handlebars.compile($('#cityTemplate').html());
+                var $city = city;
+                if (!bigCity) {
+                    $city.html(cityTemplate({ cities: null }));
+                    $city.selectpicker('refresh');
+                    return;
+                }
+
+                $.getJSON('/profile-about/city/' + bigCity, function (cities) {
+                    $city.html(cityTemplate({ cities: cities.cities }));
+                    $city.selectpicker('refresh');
+                    if (userCity) $city.selectpicker('val', userCity);
+                });
+            }
         </script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

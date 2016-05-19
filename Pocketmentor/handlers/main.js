@@ -46,10 +46,10 @@ exports.loginFail = function (req, res) {
 
 exports.already = function (req, res) {
     var id = req.params.id;
-    User.find({ userid: new RegExp('^(' + id + ':[0-9]+|' + id + '$)') }, function (err, user) {
+    User.findOne({ userid: new RegExp('^(' + id + ':[0-9]+|' + id + '$)') }, function (err, user) {
         if (err) return res.status(500).send('error: Internal error.');
         res.json(
-            (user.length) ? { msg: 'already' } : { msg: '' }
+            (user) ? { msg: 'already' } : { msg: '' }
         );
     });
 }
@@ -57,29 +57,19 @@ exports.already = function (req, res) {
 exports.register = function (req, res) {
     var id = req.body.userid;
 
-    User.find({ userid: new RegExp('^(' + id + ':[0-9]+|' + id + '$)') }, function (err, user) {
+    User.findOne({ userid: new RegExp('^(' + id + ':[0-9]+|' + id + '$)') }, function (err, user) {
         if (err) return res.status(500).send('error: Internal error.');
-        if (user.length) return res.redirect(303, '/register-fail');
+        if (user) return res.redirect(303, '/register-fail');
         
         var tocken = salt.tocken();
         var userid = id + ':' + tocken;
         var password = salt.password(req.body.password);
-        var user = new User({
+        var user = new User( {
             userid: userid,
             password: password,
             name: req.body.name,
             email: req.body.email,
-            gender : null,
-            age : null,
-            university: null,
-            highSchool: null,
-            middleSchool: null,
-            address: null,
-            specialty: null,
-            point: null,
-            mento: null,
-            picture: null,
-            date: new Date()
+            auth: false
         });
         user.save(function (err, user) {
             if (err) {
@@ -140,7 +130,7 @@ exports.remail = function (req, res) {
 
 exports.auth = function (req, res) {
     var userid = req.params.id + ':' + req.params.tocken;
-    User.findOneAndUpdate({ userid: userid }, { userid: req.params.id }, function (err, user) {
+    User.findOneAndUpdate({ userid: userid }, { userid: req.params.id, auth: true }, function (err, user) {
         if (err) {
             console.log('user auth error:' + err);
             return res.status(500).send('error: Unable to auth user.');

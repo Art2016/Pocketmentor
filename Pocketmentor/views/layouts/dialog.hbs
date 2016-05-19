@@ -84,6 +84,7 @@
     
     {{#if flash}}
         <script>
+            // 회원가입 dialog 이동
             $(document).ready(function () {
                 notify('top', 'right', '', '{{flash.type}}', 'animated fadeIn', 'animated fadeOut', '{{flash.title}}', '{{flash.message}}');
 

@@ -18,8 +18,8 @@
                 jqXHR.setRequestHeader('X-CSRF-Token', '{{_csrfToken}}');
             }
         });
-
-        var email = $("input[name=email]");
+        // 이메일 재전송
+        var email = $('input[name="email"]');
         email.focus();
         
         $('form').on('submit', function (evt) {

@@ -234,7 +234,7 @@ $(document).ready(function(){
     }
     
     
-    /** TYPEAHEAD **/
+    /** TYPEAHEAD 
      if($('.typeahead')[0]) {
           
           var statesArray = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
@@ -263,7 +263,7 @@ $(document).ready(function(){
           source: states
         });
     }
-    
+    **/
     
     /* --------------------------------------------------------
         Light Gallery
@@ -415,12 +415,12 @@ $(document).ready(function(){
     -----------------------------------------------------------*/
     if ($('.top-search')[0]) {
         $('body').on('click', '.ts-input', function(){
-            $(this).parent().addClass('toggled');
+            $(this).closest('.top-search').addClass('toggled');
         });
         
         //Reset Search
         $('body').on('click', '.ts-reset', function() {
-            $('.top-search .ts-input').val('');
+            //$('.top-search .ts-input').val('');
             $('.top-search').removeClass('toggled');
         });
     }
