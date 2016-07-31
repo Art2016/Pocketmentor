@@ -60,13 +60,13 @@ switch (app.get('env')) {
 Vacation.find(function (err, vacations) {
     if (err) return console.log(err);
     if (vacations.length) return;
-    
+
     new Vacation({
         name: 'Hood River Day Trip',
         slug: 'hood-river-day-trip',
         category: 'Day Trip',
         sku: 'HR199',
-        description: 'Spend a day sailing on the Columbia and ' + 
+        description: 'Spend a day sailing on the Columbia and ' +
             'enjoying craft beers in Hood River!',
         priceInCents: 9995,
         tags: ['day trip', 'hood river', 'sailing', 'windsurfing', 'breweries'],
@@ -75,7 +75,7 @@ Vacation.find(function (err, vacations) {
         available: true,
         packagesSold: 0,
     }).save();
-    
+
     new Vacation({
         name: 'Oregon Coast Getaway',
         slug: 'oregon-coast-getaway',
@@ -89,7 +89,7 @@ Vacation.find(function (err, vacations) {
         available: true,
         packagesSold: 0,
     }).save();
-    
+
     new Vacation({
         name: 'Rock Climbing in Bend',
         slug: 'rock-climbing-in-bend',
@@ -119,14 +119,14 @@ app.use(function (req, res, next) {
                 console.error('Failsafe shutdown.');
                 process.exit(1);
             }, 5000);
-            
+
             // 클러스터 연결 해제
             var worker = require('cluster').worker;
             if (worker) worker.disconnect();
-            
+
             // 요청을 받는 것을 중지
             //server.close();
-            
+
             try {
                 // 익스프레스의 에러 라우트 시도
                 next(err);
@@ -142,11 +142,11 @@ app.use(function (req, res, next) {
             console.error('Unable to send 500 response.\n', error.stack);
         }
     });
-    
+
     // 도메인에 요청과 응답 객체 추가
     domain.add(req);
     domain.add(res);
-    
+
     // 나머지 요청 체인을 도메인에서 처리
     domain.run(next);
 });
@@ -378,6 +378,40 @@ app.get('/unauthorized', function (req, res) {
 
 app.get('/test', function (req, res) {
     res.render('test');
+});
+
+app.get('/mecab-test', function (req, res){
+    var mecab = require('mecab-ya');
+
+    var text = 'english is bad';
+
+    mecab.pos(text, function (err, result) {
+        console.log(err);
+        console.log(result);
+        res.send(result);
+        /*
+            [ [ '아버지', 'NNG' ],
+              [ '가', 'JKS' ],
+              [ '방', 'NNG' ],
+              [ '에', 'JKB' ],
+              [ '들어가', 'VV' ],
+              [ '신다', 'EP+EC' ] ]
+        */
+    });
+});
+
+app.get('/twtkr-test', function (req, res) {
+    var TwitterKoreanText = require('twtkrjs');
+    var processor = new TwitterKoreanText({
+      stemmer: false,      // (optional default: true)
+      normalizer: false,   // (optional default: true)
+      spamfilter: true     // (optional default: false)
+    });
+
+    processor.tokenizeToStrings("한국어를 처리하는 예시입니닼ㅋㅋㅋㅋㅋ", function(err, result) {
+        console.log(result);
+        res.send(result);
+    })
 });
 
 // add support for auto views
